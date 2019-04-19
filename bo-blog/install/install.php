@@ -136,7 +136,7 @@ if ($v=='3') {
 	  KEY `pubtime` (`pubtime`),
 	  KEY `views` (`views`),
 	  KEY `sticky` (`sticky`)
-	) TYPE=MyISAM{$sqlcharset}";
+	) ENGINE=MyISAM{$sqlcharset}";
 	$result=db_query($setup_query);
 	if (!$result) template("<div class='log'>{$lang[1]}</div><div class='mes'>{$errmsg}</div>");
 
@@ -168,7 +168,7 @@ if ($v=='3') {
 	  `empty2` text NULL,
 	  `empty3` text NULL,
 	  KEY `cateorder` (`cateorder`)
-	) TYPE=MyISAM{$sqlcharset}";
+	) ENGINE=MyISAM{$sqlcharset}";
 	$result=db_query($setup_query);
 	if (!$result) template("<div class='log'>{$lang[1]}</div><div class='mes'>{$errmsg}</div>");
 	$setup_query="INSERT INTO `{$db_prefix}categories` VALUES (0, '{$lang[32]}', '{$lang[33]}', 0, 0, 0, '', '', '', '', '')";
@@ -188,7 +188,7 @@ if ($v=='3') {
 	  `empty1` int(20) NOT NULL default '0',
 	  `empty2` int(20) NOT NULL default '0',
 	  `empty3` int(20) NOT NULL default '0'
-	) TYPE=MyISAM{$sqlcharset}";
+	) ENGINE=MyISAM{$sqlcharset}";
 	$result=db_query($setup_query);
 	if (!$result) template("<div class='log'>{$lang[1]}</div><div class='mes'>{$errmsg}</div>");
 	$setup_query="INSERT INTO `{$db_prefix}counter` VALUES (0, 0, 0, 1, 0, 0, 0, 0, {$ts}, 0, 0)";
@@ -205,7 +205,7 @@ if ($v=='3') {
 	  `empty1` text NULL,
 	  `empty2` text NULL,
 	  `empty3` text NULL
-	) TYPE=MyISAM{$sqlcharset}";
+	) ENGINE=MyISAM{$sqlcharset}";
 	$result=db_query($setup_query);
 	if (!$result) template("<div class='log'>{$lang[1]}</div><div class='mes'>{$errmsg}</div>");
 	$setup_query="INSERT INTO `{$db_prefix}forbidden` VALUES ('', '', '', '', '', '', '', '')";
@@ -216,7 +216,7 @@ if ($v=='3') {
 	CREATE TABLE `{$db_prefix}history` (
 	  `hisday` int(8) NOT NULL default '0',
 	  `visit` int(8) NOT NULL default '0'
-	) TYPE=MyISAM{$sqlcharset}";
+	) ENGINE=MyISAM{$sqlcharset}";
 	$result=db_query($setup_query);
 	if (!$result) template("<div class='log'>{$lang[1]}</div><div class='mes'>{$errmsg}</div>");
 
@@ -229,7 +229,7 @@ if ($v=='3') {
 	  `empty1` text NULL,
 	  `empty2` text NULL,
 	  KEY `linkgporder` (`linkgporder`)
-	) TYPE=MyISAM{$sqlcharset}";
+	) ENGINE=MyISAM{$sqlcharset}";
 	$result=db_query($setup_query);
 	if (!$result) template("<div class='log'>{$lang[1]}</div><div class='mes'>{$errmsg}</div>");
 	$setup_query="INSERT INTO `{$db_prefix}linkgroup` VALUES (0, '{$lang[34]}', 1, 0, '', '')";
@@ -249,7 +249,7 @@ if ($v=='3') {
 	  `empty1` text NULL,
 	  `empty2` text NULL,
 	  KEY `linkorder` (`linkorder`)
-	) TYPE=MyISAM{$sqlcharset}";
+	) ENGINE=MyISAM{$sqlcharset}";
 	$result=db_query($setup_query);
 	if (!$result) template("<div class='log'>{$lang[1]}</div><div class='mes'>{$errmsg}</div>");
 	$setup_query="INSERT INTO `{$db_prefix}links` VALUES (0, 'Bo-Blog', 'http://www.bo-blog.com', '', 'Bo-Blog Official Site', 0, 0, 1, '', ''), (1, 'BMForum', 'http://www.bmforum.com', '', 'BMForum - {$lang[71]}', 0, 0, 1, '', '')";
@@ -270,7 +270,7 @@ if ($v=='3') {
 	  `empty1` int(8) NOT NULL default '0',
 	  `empty2` int(8) NOT NULL default '0',
 	  `empty3` int(8) NOT NULL default '0'
-	) TYPE=MyISAM{$sqlcharset}";
+	) ENGINE=MyISAM{$sqlcharset}";
 	$result=db_query($setup_query);
 	if (!$result) template("<div class='log'>{$lang[1]}</div><div class='mes'>{$errmsg}</div>");
 	$setup_query="INSERT INTO `{$db_prefix}maxrec` VALUES (0, 1, 0, 3, 0, 0, 0, 0, 1, 0, 0, 0)";
@@ -308,7 +308,7 @@ if ($v=='3') {
 	  `empty8` text NULL,
 	  KEY `repid` (`repid`),
 	  KEY `reptime` (`reptime`)
-	) TYPE=MyISAM{$sqlcharset}";
+	) ENGINE=MyISAM{$sqlcharset}";
 	$result=db_query($setup_query);
 	if (!$result) template("<div class='log'>{$lang[1]}</div><div class='mes'>{$errmsg}</div>");
 
@@ -345,7 +345,7 @@ if ($v=='3') {
 	  KEY `repid` (`repid`),
 	  KEY `reptime` (`reptime`),
 	  KEY `blogid` (`blogid`)
-	) TYPE=MyISAM{$sqlcharset}";
+	) ENGINE=MyISAM{$sqlcharset}";
 	$result=db_query($setup_query);
 	if (!$result) template("<div class='log'>{$lang[1]}</div><div class='mes'>{$errmsg}</div>");
 
@@ -356,7 +356,7 @@ if ($v=='3') {
 	  `tagcounter` int(8) NOT NULL default '0',
 	  `tagentry` text NULL,
 	  `tagrelate` text NULL
-	) TYPE=MyISAM{$sqlcharset}";
+	) ENGINE=MyISAM{$sqlcharset}";
 	$result=db_query($setup_query);
 	if (!$result) template("<div class='log'>{$lang[1]}</div><div class='mes'>{$errmsg}</div>");
 
@@ -381,7 +381,7 @@ if ($v=='3') {
 	  `avatar` text NULL,
 	  KEY `userid` (`userid`),
 	  KEY `usergroup` (`usergroup`)
-	) TYPE=MyISAM{$sqlcharset}";
+	) ENGINE=MyISAM{$sqlcharset}";
 	$result=db_query($setup_query);
 	if (!$result) template("<div class='log'>{$lang[1]}</div><div class='mes'>{$errmsg}</div>");
 	$setup_query="INSERT INTO `{$db_prefix}user` VALUES (1, '{$username}', '{$password}', {$ts}, 2, 'admin@yourname.com', 'http://www.yourname.com', 0, '', '', 0, '', '', 0, '{$ip}', '')";
@@ -402,7 +402,7 @@ if ($v=='3') {
 	`emotstat` TINYINT( 1 ) NOT NULL DEFAULT '0',
 	`pagealias` VARCHAR( 255 ) NULL,
 	INDEX ( `pageauthor` )
-	) TYPE=MyISAM{$sqlcharset}";
+	) ENGINE=MyISAM{$sqlcharset}";
 	$result=db_query($setup_query);
 	if (!$result) template("<div class='log'>{$lang[1]}</div><div class='mes'>{$errmsg}</div>");
 
@@ -454,7 +454,7 @@ if ($v=='3') {
 	  `uploadtime` int(11) default NULL,
 	  `uploaduser` int(6) NOT NULL default '0',
 	  PRIMARY KEY  (`fid`)
-	) TYPE=MyISAM";
+	) ENGINE=MyISAM";
 	$result=db_query($setup_query);
 	if (!$result) template("<div class='log'>{$lang[1]}</div><div class='mes'>{$errmsg}</div>");
 	
