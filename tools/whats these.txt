@@ -1,0 +1,4 @@
+demo-flashclock.zip  一个演示的侧边模块项目自安装文件
+demo-suspect.zip  一个演示的限制项词语导入文件
+guid.php  运行它可生成若干个GUID
+emergency  紧急恢复程序，可用于重置密码等，应急使用，较危险，没事勿解压上传。使用时请上传emergency.php到安装目录下并通过浏览器访问这个文件，使用完毕立即删除！

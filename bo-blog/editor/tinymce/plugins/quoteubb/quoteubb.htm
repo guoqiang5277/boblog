@@ -1,0 +1,35 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>{$lang_quoteubb_title}</title>
+	<script language="javascript" type="text/javascript" src="../../tiny_mce_popup.js"></script>
+	<script language="javascript" type="text/javascript" src="jscripts/functions.js"></script>
+	<base target="_self" />
+</head>
+<body style="display: none" onload="init()">
+	<div align="center">
+		<div class="title">{$lang_quoteubb_title}:<br /><br /></div>
+
+		<table border="0" cellspacing="0" cellpadding="4" width="100%">
+		  <tr>
+			<td width="15%">{$lang_quoteubb_type}</td>
+			<td>
+			<select id="mm_type">
+			<option value="quote">{$lang_quoteubb_quote}</option>
+			<option value="code">{$lang_quoteubb_code}</option>
+			<option value="php">{$lang_quoteubb_php}</option>
+			</select>
+			</td>
+		  </tr>
+		  <tr>
+			<td width="15%" valign="top">{$lang_quoteubb_txt}</td>
+			<td valign="top">
+			<textarea id="mm_txt" style="width: 95%" value="http://"></textarea>
+			</td>
+		  </tr>
+		  <tr>
+			<td colspan="2" align="center"><input type="button" value="{$lang_quoteubb_submit}" onclick="getInsert()"> <input type="button" value="{$lang_quoteubb_close}" onclick="tinyMCEPopup.close()"></td>
+		  </tr>
+		</table>
+	</div>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<IfModule mod_rewrite.c>
+RewriteEngine on
+RewriteBase <ROOTHERE>
+
+#New rules since 2.1.0 beta 2
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^.*$ - [L]
+
+RewriteRule ^post/([0-9]+)/?([0-9]+)?/?([0-9]+)?/?$ read.php?entryid=$1&page=$2&part=$3 [QSA,L]
+RewriteRule ^page/([0-9]+)/([0-9]+)/?$ index.php?mode=$1&page=$2 [QSA,L]
+RewriteRule ^starred/([0-9]+)/?([0-9]+)?/?$ star.php?mode=$1&page=$2 [QSA,L]
+RewriteRule ^category/([^/]+)/?([0-9]+)?/?([0-9]+)?/?$ index.php?go=category_$1&mode=$2&page=$3 [QSA,L]
+RewriteRule ^archiver/([0-9]+)/([0-9]+)/?([0-9]+)?/?([0-9]+)?/?$ index.php?go=archive&cm=$1&cy=$2&mode=$3&page=$4 [QSA,L]
+RewriteRule ^date/([0-9]+)/([0-9]+)/([0-9]+)/?([0-9]+)?/?([0-9]+)?/?$ index.php?go=showday_$1-$2-$3&mode=$4&page=$5 [QSA,L]
+RewriteRule ^user/([0-9]+)/?$ view.php?go=user_$1 [L]
+RewriteRule ^tags/([^/]+)/?([0-9]+)?/?([0-9]+)?/?$ tag.php?tag=$1&mode=$2&page=$3 [QSA,L]
+RewriteRule ^component/id/([0-9]+)/?$ page.php?pageid=$1 [L]
+RewriteRule ^component/([^/]+)/?$ page.php?pagealias=$1 [L]
+
+
+#Force redirection for old rules
+RewriteRule ^post/([0-9]+)\.htm$ post/$1/ [R=301,L]
+RewriteRule ^post/([0-9]+)\_([0-9]+)\.htm$ post/$1/$2/ [R=301,L]
+RewriteRule ^post/([0-9]+)\_([0-9]+)\_([0-9]+)\.htm$ post/$1/$2/$3/ [R=301,L]
+RewriteRule ^index\_([0-9]+)\_([0-9]+)\.htm$ page/$1/$2/ [R=301,L]
+RewriteRule ^star\_([0-9]+)\_([0-9]+)\.htm$ starred/$1/$2/ [R=301,L]
+RewriteRule ^category\_([0-9]+)\.htm$ category/$1/ [R=301,L]
+RewriteRule ^category\_([0-9]+)\_([0-9]+)\_([0-9]+)\.htm$ category/$1/$2/$3/ [R=301,L]
+RewriteRule ^archive\_([0-9]+)\_([0-9]+)\.htm$ archiver/$1/$2/ [R=301,L]
+RewriteRule ^archive\_([0-9]+)\_([0-9]+)\_([0-9]+)\_([0-9]+)\.htm$ archiver/$1/$2/$3/$4/ [R=301,L]
+RewriteRule ^showday\_([0-9]+)\_([0-9]+)\_([0-9]+)\.htm$ date/$1/$2/$3/ [R=301,L]
+RewriteRule ^showday\_([0-9]+)\_([0-9]+)\_([0-9]+)\_([0-9]+)\_([0-9]+)\.htm$ date/$1/$2/$3/$4/$5/ [R=301,L]
+
+#Customized URL
+RewriteRule ^([^\/]*)\.html$ $1/ [R=301,L]
+RewriteRule ^([^/|.]*)/?([0-9]+)?/?([0-9]+)?/?$ read.php?blogalias=$1&page=$2&part=$3 [QSA,L]
+</IfModule>

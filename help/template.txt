@@ -1,0 +1,85 @@
+2.03 to 2.10风格升级手册[07.08.29 Update] 
+鸣谢阴·鬼火（http://404cn.com）整理
+
+ 2.10风格保持了向下兼容的特性，所以旧风格即使没有升级也能正常使用。
+以下操作请使用Editplus等支持UTF-8的编辑器进行修改，保存时注意编码的选择。
+
+elements.php部分
+
+1.新增模块viewpage
+本模块作用为自定义页面的显示
+
+打开elements.php，在$elements['linkdiv']的eot;后插入
+$elements['viewpage']=<<<eot
+<div class="pagebox">
+ <div class="pagebox-title">
+   <h4>
+   {entrytitle}
+   </h4>
+ </div>
+ <div class="pagebox-content">
+   {entrycontent}
+ </div>
+</div>
+eot;
+
+保存
+
+2.新增标签（非必须，请选择性添加）
+
+$elements['excerpt']，$elements['excerptontop']，$elements['viewentry']区域
+{entrysourcewithlink} 带链接的来源
+{entrysource} 来源名称 /*a bug,may fix*/
+{entrysourcelink} 来源链接 /*a bug,may fix*/
+{entrytbnumwithlink} 可点击的纯日志引用数量
+{adminlink} 输出不带|的管理
+
+$elements['displayside']区域
+{section_side_components_one} 输出第一个侧边栏的内容
+{section_side_components_two} 输出第二个侧边栏的内容
+
+global区域，使用时需要加上global
+{categoryplainshow} 输出纯文字的分类
+
+特殊标签
+{pageID} 可进行不同页面的css微调，只有如下用法
+<body id="{pageID}">
+
+
+被遗忘的标签
+entrydatemnamefull 完整形式输出日志英文月份
+entrydatemnameshort 缩写形式输出日志英文月份
+
+info.php部分
+本行用于新旧模板的识别（旧模板将由程序补齐残缺的部分）。不进行此处的修改也可以使用entrysource之类的新标签，但page和css里新增的部分将无效，总是使用系统默认。
+
+打开于末尾插入
+$template['sysver']='5.2';
+
+保存
+
+styles.css部分
+增加表情分页选择样式，于文件末尾插入如下内容，样式内容请自行调整
+/* Emot Page Selection */
+#smileybuttons {
+ text-align: right;
+ margin-top: 9px;
+}
+
+.smileybut {
+ margin-right:3px;
+ padding: 3px;
+ vertical-align: middle;
+ font-weight: bold;
+ color: #666666;
+ text-align: center;
+ background-color: #EFEFEF;
+}
+
+.smileybut  a{
+}
+
+
+CSS增加分页span样式（可选）
+.pagebar-mainbody 分页条里纯分页部分的span
+.pagebar-selections 分页条里纯进度条的span

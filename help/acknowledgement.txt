@@ -1,0 +1,14 @@
+感谢以下网友的协助。（按字母顺序+汉字笔画数排序）
+
+* msxcms (http://www.bmforum.com)
+* Nicky (http://www.osxcn.com)
+* totti (http://www.ittot.com)
+* 剑心 (http://www.loveshell.net)
+* 浅蓝色的辐射鱼 (http://www.51shell.cn)
+
+This program contains codes from the following projects. Copyrights of these parts belong to their perspective authors.
+
+* TinyMCE (http://tinymce.moxiecode.com)
+* Lunar Calendar original code by S&S Lab
+* Watermark and Anti-spam in Trackbacks original code/algorithm by 4ngel (http://sablog.net)
+* Enabling Javascript Copy and Paste in Firefox, Drop menu in Admin Center, UBB in Firefox (partial) original coders unknown

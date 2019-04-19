@@ -1,0 +1,42 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>{$lang_multimedia_title}</title>
+	<script language="javascript" type="text/javascript" src="../../tiny_mce_popup.js"></script>
+	<script language="javascript" type="text/javascript" src="jscripts/functions.js"></script>
+	<base target="_self" />
+</head>
+<body style="display: none">
+	<div align="center">
+		<div class="title">{$lang_multimedia_title}:<br /><br /></div>
+
+		<table border="0" cellspacing="0" cellpadding="4">
+		  <tr>
+			<td width="25%">{$lang_multimedia_mtype}</td>
+			<td>
+			<select id="mm_type">
+			<option value="swf">{$lang_multimedia_swf}</option>
+			<option value="wmp">{$lang_multimedia_wmp}</option>
+			<option value="real">{$lang_multimedia_real}</option>
+			<option value="flv">{$lang_multimedia_flv}</option>
+			</select>
+			</td>
+		  </tr>
+		  <tr>
+			<td width="25%">{$lang_multimedia_src}</td>
+			<td>
+			<input id="mm_src" type="text" style="width: 95%" value="http://">
+			</td>
+		  </tr>
+		  <tr>
+			<td width="25%">{$lang_multimedia_dimension}</td>
+			<td>
+			<input id="mm_width" type="text" size="5" value="400">px * <input id="mm_height" type="text" size="5" value="300">px
+			</td>
+		  </tr>
+		  <tr>
+			<td colspan="2" align="center"><input type="button" value="{$lang_multimedia_submit}" onclick="getMultimediaInsert()"> <input type="button" value="{$lang_multimedia_close}" onclick="tinyMCEPopup.close()"></td>
+		  </tr>
+		</table>
+	</div>
+</body>
+</html>

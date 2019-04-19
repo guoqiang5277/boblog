@@ -1,0 +1,31 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>{$lang_filedownload_title}</title>
+	<script language="javascript" type="text/javascript" src="../../tiny_mce_popup.js"></script>
+	<script language="javascript" type="text/javascript" src="jscripts/functions.js"></script>
+	<base target="_self" />
+</head>
+<body style="display: none">
+	<div align="center">
+		<div class="title">{$lang_filedownload_title}:<br /><br /></div>
+
+		<table border="0" cellspacing="0" cellpadding="4" width="100%">
+		  <tr>
+			<td width="25%">{$lang_filedownload_mtype}</td>
+			<td>
+			<input id="registeronly" type="checkbox" /> {$lang_filedownload_register}
+			</td>
+		  </tr>
+		  <tr>
+			<td width="25%">{$lang_filedownload_src}</td>
+			<td>
+			<input id="filesrc" type="text" style="width: 95%" value="http://">
+			</td>
+		  </tr>
+		  <tr>
+			<td colspan="2" align="center"><input type="button" value="{$lang_filedownload_submit}" onclick="getFileInsert()"> <input type="button" value="{$lang_filedownload_close}" onclick="tinyMCEPopup.close()"></td>
+		  </tr>
+		</table>
+	</div>
+</body>
+</html>

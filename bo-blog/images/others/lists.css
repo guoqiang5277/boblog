@@ -1,0 +1,38 @@
+ul.sortable li {
+	position: relative;
+}
+
+ul.boxy {
+	list-style-type: none;
+	padding: 4px 4px 0 4px;
+	margin: 0px;
+	width: 200px;
+	font-size: 12px;
+}
+ul.boxy li {
+	cursor:move;
+	margin-bottom: 4px;
+	padding: 2px 2px;
+	border: 1px solid #ccc;
+	background-color: #eee;
+}
+
+ul.boxier {
+	list-style-type: none;
+	padding: 4px 4px 0 4px;
+	margin: 0px;
+	width: 200px;
+	font-size: 12px;
+}
+ul.boxier li {
+	cursor:move;
+	margin-bottom: 4px;
+	padding: 2px 2px;
+	border: 1px solid #c00;
+	background-color: #eee;
+}
+
+#siderbarone li, #siderbartwo li {
+	height: 60px;
+	padding-left: 64px;
+}

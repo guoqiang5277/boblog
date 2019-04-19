@@ -1,0 +1,337 @@
+body, div, td, option, input, textarea {
+	font-family: Verdana, Arial, Tahoma, 宋体;
+	font-size: 9pt;
+	color: #000;
+}
+body {
+	margin: 0px;
+	background-color: #F4F4F4;
+	text-align: center;
+}
+body, div, td a {
+	color: #000;
+	text-decoration: none;
+}
+
+form {
+	display: inline;
+}
+input, textarea, select {
+	font-family: Tahoma, Arial; 
+	font-size: 12px; 
+}
+.formbutton {
+	background: url('bg_button.png') repeat-x;
+	border: 1px solid #99CC66;
+	color: #517928;
+}
+
+#adminoverall {
+	width: 950px;
+	margin: auto;
+	text-align: center;
+}
+
+#adminheader {
+	height: 56px;
+	margin-top: 16px;
+	background: url('logo.png') no-repeat bottom left;
+}
+
+#adminheaderbar {
+	padding-left: 135px;
+	padding-top: 22px;
+}
+#adminheaderbar ul {
+	list-style: none;
+	width: auto;
+	margin: 0;
+	padding: 0;
+} 
+#adminheaderbar li {
+	display: block;
+	float:left;
+	margin: 0;
+	padding: 0;
+	width:80px;	
+	text-align: center;
+	background: url('bg_nav.png') repeat-x;
+	border: 1px solid #93ADC7;
+	border-left: none;
+}
+#adminheaderbar .firstitem {
+	border-left: 1px solid #93ADC7;
+}
+#adminheaderbar .ahb_active a, #adminheaderbar .ahb_active li a:hover {
+	background: url('bg_button.png') repeat-x;
+	color: #517928;
+}
+#adminheaderbar .ahb_active li {
+	border: 1px solid #99CC66;
+	border-left: 0;
+}
+#adminheaderbar .ahb_active .firstitem {
+	border-left: 1px solid #99CC66;
+}
+#adminheaderbar li a {
+	text-decoration: none; display: block; color: #044275;
+	height: 23px;
+	padding-top: 5px;
+}
+*+html #adminheaderbar li a {
+	padding-top: 8px;
+}
+* html #adminheaderbar li a {
+	padding-top: 8px;
+}
+#adminheaderbar li a:hover {
+	background: url('bg_button2.png') repeat-x;
+	color: #000;
+}
+
+
+#dropmenudiv {
+	border-top: 1px solid #999999;
+	background: #fff;
+	width: 120px;
+	text-align: left;
+}
+#dropmenudiv ul {
+	list-style: none;
+	margin: 0;	padding: 0;
+	width: 120px;
+	height: 30px;
+}
+#dropmenudiv li {
+	display: block;
+	margin: 0;	padding: 0;
+	width: 120px;
+	height: 30px;
+	background: url('bg_titlebar.png') repeat-x;
+	border: 1px solid #999999;
+	border-top: 0;
+}
+#dropmenudiv li a{
+	display: block;
+	padding-top: 8px;
+	padding-left: 15px;
+	height: 22px;
+	color: #333;
+	text-decoration: none;
+}
+#dropmenudiv li a:hover {
+	display: block;
+	padding-top: 8px;
+	padding-left: 15px;
+	height: 22px;
+	color: #465E00;
+	background: #EAF9D7;
+}
+
+
+
+#adminmain {
+	clear: both;
+	text-align: center;
+	padding: 0; margin: auto;
+	background-color: #fff;
+	width: 100%;
+	border: 1px solid #DCE2E7;
+	border-bottom: 0;
+}
+
+#admininner {
+	width: 100%;
+	text-align: left;
+	padding: 0; margin: auto;
+}
+
+
+#bloginfo, #bloginfoimg, #bloginfotext {
+	display: none;
+}
+
+
+.tablewidth {
+	width: 100%;
+}
+.visibleitem,  .visibleitem a,  .visibleitem td {
+	background-color: #F7FBFF;
+	color: #000;
+}
+
+.hiddenitem, .hiddenitem a,  .hiddenitem td{
+	background-color: #C6E7FF;
+	color: #4D6185;
+}
+
+.admintitle {
+	background-color: #3C4040;
+	background: url('bg_admintitle.png') repeat-x;
+	font-weight: bold;
+	color: #000;
+	height: 25px;
+}
+
+.admintitle td{
+	color: #000;
+}
+
+.sectstart {
+	background: url('bg_lead.png') repeat-x;
+	color: #003366;
+	font-weight: bold;
+	padding-left: 15px;
+	height: 30px;
+	border-left: 1px solid #6A9DC8;
+	border-bottom: 1px solid #6A9DC8;
+}
+*+html .sectstart{
+	height: 20px;
+}
+* html .sectstart{
+	height: 20px;
+}
+body:nth-of-type(1) .sectstart{ /*For Chrome*/
+	height: 20px;
+}
+.sectend {
+	background: url('bg_lead.png') repeat-x;
+	color: #003366;
+	text-align: right;
+	padding-right: 10px;
+	border-right: 1px solid #6A9DC8;
+	border-bottom: 1px solid #6A9DC8;
+}
+.sectend { /*For Firefox*/
+	height: 30px;
+}
+*+html .sectend {  /*For IE7*/
+	height: 20px;
+}
+* html .sectend { /*For IE6*/
+	height: 20px;
+}
+body:nth-of-type(1) .sectend{ /*For Chrome*/
+	height: 20px;
+}
+.sect {
+	background-color: #FFF;
+	color: #000;
+	padding-left: 15px;
+	padding-right: 10px;
+	line-height: 150%;
+}
+.sect option {
+	background-color: #fff;
+}
+.sect a:hover, #copyright a:hover {
+	background-color: #4AB4EC; 
+	color: #fff;
+}
+.sectbar {
+	background-color: #fff;
+	color: #000;
+}
+
+.prefleft {
+	background-color: #F7FBFF;
+	color: #4D6185;
+}
+
+.prefright {
+	background-color: #F7FBFF;
+	color: #000;
+}
+
+.prefsection {
+	background: url('bg_admintitle.png') repeat-x;
+	font-weight: bold;
+	color: #000;
+}
+.prefsection a {
+	color: #000;
+}
+
+#adminfooter {
+	background: url('bg_bottom.png') no-repeat top;
+	clear: both;
+	text-align: right;
+	height: 70px;
+	width: 950px;
+}
+*+html #adminfooter {
+	padding-left: 1px;
+}
+* html #adminfooter {
+	padding-left: 1px;
+}
+#copyright {
+	padding-right: 70px;
+	padding-top: 46px;
+}
+
+#copyright a {
+	color: #000;
+	text-decoration: none;
+}
+
+#uploadrow ul {background-color:#fff; list-style: none;  width:100%; margin: 0px; padding: 0px; margin-left: 15px;} 
+#uploadrow li { float:left; width: 290px; overflow: hidden; text-align: left; background-color:#fff;}
+#uploadrow li a {text-decoration: none; display: block; color: #000; background-color:#fff;}
+#uploadrow li a:hover {background-color: #C6E7FF;}
+
+.highlight, .normal {
+	background-color: #C6E7FF;
+	padding: 4px;
+}
+.highlight {
+	font-weight: bold;
+}
+
+#taghint { min-height: 30px; height: 30px; }
+#taghint ul { margin: 0; padding: 5px; list-style: none; }
+#taghint li { display: inline; float:left; width: auto; padding-right: 18px; overflow: hidden; text-align: left;}
+#taghint li a {text-decoration: none; display: block;}
+* html #taghint a{
+	width: 0;
+	white-space: nowrap;
+}
+#taghint li a:hover {color:#fff;}
+
+
+.adminbox-success {
+	border: 1px solid #3E5F10;
+	background: #E7F7D1;
+	color: #000;
+	font-weight: bold;
+	height: 30px;
+	padding: 10px;
+}
+.adminbox-success-mask {
+	height: 30px;
+	background: #5C8F18;
+}
+.adminbox-failure {
+	border: 1px solid #CC0000;
+	background: #FFD7D7;
+	color: #000;
+	font-weight: bold;
+	height: 30px;
+	padding: 10px;
+}
+.adminbox-failure-mask {
+	height: 30px;
+	background: #930000;
+}
+.adminbox-loading {
+	border: 1px solid #CA700B;
+	background-color: #FFFFCC;
+	color: #000;
+	font-weight: bold;
+	height: 20px;
+	padding: 5px;
+}
+#divMask {
+	margin-top: -50px;
+}
