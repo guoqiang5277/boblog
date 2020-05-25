@@ -117,7 +117,7 @@ if ($job=='deltb' || $job=='tbnopass') {
 	if (count($repid)>0) {
 		$blog->query("DELETE FROM `{$db_prefix}replies` WHERE {$querydel}");
 		if ($job=='deltb') {
-			$delednum=db_affected_rows();
+			$delednum=$blog->db_affected_rows();
 			$blog->query("UPDATE `{$db_prefix}counter` SET `tb`=`tb`-$delednum");
 		}
 	}
@@ -267,12 +267,12 @@ if ($job=='pass' || $job=='block') {
 	if (count($repid)>0) {
 		if ($job=='pass') {
 			$blog->query("UPDATE `{$db_prefix}replies` SET `reproperty`=`reproperty`-2  WHERE {$querypass}");
-			$countreps=db_affected_rows();
+			$countreps=$blog->db_affected_rows();
 			$blog->query("UPDATE `{$db_prefix}counter` SET `replies`=`replies`+$countreps");
 			$fetchURL='admin.php?go=reply_censor';
 		} else {
 			$blog->query("UPDATE `{$db_prefix}replies` SET `reproperty`=`reproperty`+2  WHERE {$querypass}");
-			$countreps=db_affected_rows();
+			$countreps=$blog->db_affected_rows();
 			$blog->query("UPDATE `{$db_prefix}counter` SET `replies`=`replies`-$countreps");
 			$fetchURL='admin.php?go=reply_default';
 		}
@@ -302,7 +302,7 @@ if ($job=='tbpass') {
 	$querypass=@implode(' OR ', $passrange);
 	if (count($repid)>0) {
 		$blog->query("UPDATE `{$db_prefix}replies` SET `reproperty`=4  WHERE {$querypass}");
-		$countreps=db_affected_rows();
+		$countreps=$blog->db_affected_rows();
 		$blog->query("UPDATE `{$db_prefix}counter` SET `tb`=`tb`+$countreps");
 	}
 	$countblogid=array_values(array_unique($countblogid));

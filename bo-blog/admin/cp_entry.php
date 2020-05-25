@@ -153,7 +153,7 @@ if ($job=='batch') {
 	elseif ($opt=='changeauthor') $queryact="UPDATE `{$db_prefix}blogs` SET `authorid`='{$chnadm}' WHERE {$batch_id}";
 	$blog->query($queryact);
 	if ($opt=='del' || $opt=='deldraft') {
-		$delednum=db_affected_rows();
+		$delednum=$blog->db_affected_rows();
 		$statistics['entries']=$statistics['entries']-$delednum;
 		$blog->query("UPDATE `{$db_prefix}counter` SET `entries`={$statistics['entries']}");
 		if ($opt=='del') {

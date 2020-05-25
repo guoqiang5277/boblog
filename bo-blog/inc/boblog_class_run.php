@@ -12,34 +12,55 @@ In memory of my university life
 
 class boblog {
 //Bo-Blog 2.x Database Control Class (c) Bob Shen
+    var $con=NULL;
+    var $isConnect=0;
 	function boblog() {
-		global $db_connected;
-		if (empty($db_connected)) $this->connectdb();
 	}
-
+	//构造函数，初始化
+    function __construct(){
+	    if ($this->isConnect==0){
+            $this->con = $this->connectdb();
+            if ($this->con){
+                $this->isConnect=1;
+            }
+        }
+    }
+    //析构函数，注销
+    function __destruct() {
+	    if($this->con){
+	        db_close($this->con);
+	        $this->isConnect = 0;
+        }
+    }
+    function getCon(){
+        if ($this->isConnect==0){
+            $this->con = $this->connectdb();
+            if ($this->con){
+                $this->isConnect=1;
+            }
+        }
+        return $this->con;
+	}
 	function connectdb() {
-		global $db_connected, $db_server, $db_username, $db_password, $db_name;
+        global $db_server, $db_username, $db_password, $db_name;
 		$con = db_connect($db_server, $db_username, $db_password, $db_name);
-		$db_connected=1;
+        return $con;
 	}
 
 	function getsinglevalue($tablename) {
-	    global $con;
-		$result=db_query($con,"SELECT * FROM `$tablename` LIMIT 0,1");
-		$fetchresult=db_fetch_array($result);
+		$result=db_query($this->getCon(),"SELECT * FROM `$tablename` LIMIT 0,1");
+        $fetchresult=db_fetch_array($result);
 		return $fetchresult;
 	}
 
 	function getbyquery($query) {
-        global $con;
-		$result=db_query($con,$query);
+		$result=db_query($this->getCon(),$query);
 		$fetchresult=db_fetch_array($result);
 		return $fetchresult;
 	}
 
 	function getgroupbyquery($query) {
-        global $con;
-		$result=db_query($con,$query);
+		$result=db_query($this->getCon(),$query);
 		$i=0;
 		while ($row=db_fetch_array($result)) {
 			while (@list($key, $val)=@each($row)) {
@@ -47,12 +68,11 @@ class boblog {
 			}
 			$i+=1;
 		}
-		return $fetchresult;
+        return $fetchresult;
 	}
 
 	function getarraybyquery($query) {
-        global $con;
-        $result=db_query($con,$query);
+        $result=db_query($this->getCon(),$query);
 		$i=0;
 		while ($row=db_fetch_array($result)) {
 			while (@list($key, $val)=@each($row)) {
@@ -60,21 +80,24 @@ class boblog {
 			}
 			$i+=1;
 		}
-		return $fetchresult;
+        return $fetchresult;
 	}
 
 	function query($myquery) {
-        global $con;
-        $result=db_query($con,$myquery);
-		return $result;
+
+        $result=db_query($this->getCon(),$myquery);
+        return $result;
 	}
 
 	function countbyquery($myquery) {
-        global $con;
-        $result=db_query($con,$myquery);
+        $result=db_query($this->getCon(),$myquery);
 		$row=db_fetch_row($result);
-		return $row[0];
+        return $row[0];
 	}
+    function db_affected_rows() {
+        $result=db_affected_rows($this->getCon());
+        return $result;
+    }
 }
 
 class template {
@@ -188,7 +211,7 @@ class getblogs extends boblog {
 	function new_record_array ($partialquery, $perpagevolume, $currentpage) {
 		global $db_prefix;
 		$start_id=($currentpage-1)*$perpagevolume;
-		$result=db_query("SELECT * FROM `{$db_prefix}blogs` {$partialquery} LIMIT $start_id, $perpagevolume");
+		$result=$this->query("SELECT * FROM `{$db_prefix}blogs` {$partialquery} LIMIT $start_id, $perpagevolume");
 		$this->total_rows=db_num_rows($result);
 		$i=0;
 		while ($row=db_fetch_array($result)) {

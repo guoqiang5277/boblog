@@ -400,7 +400,7 @@ if ($job=='batchusers') {
 	$dels=@implode(',', $selid);
 	if ($opt=='del') {
 		$blog->query("DELETE 	FROM `{$db_prefix}user` WHERE `userid` IN ({$dels})");
-		$delednum=db_affected_rows();
+		$delednum=$blog->db_affected_rows();
 		$blog->query("UPDATE `{$db_prefix}counter` SET `users`=`users`-{$delednum}");
 	} elseif ($opt=='newusergroup') {
 		$blog->query("UPDATE `{$db_prefix}user` SET `usergroup`='{$tousergroup}'  WHERE `userid` IN ({$dels})");

@@ -477,12 +477,13 @@ eot;
 }
 
 if ($job=='mysqlquery') {
+	global $blog;
 	acceptrequest('sqlinput');
 	$sqlinput=stripslashes($sqlinput);
 	$sqlinput=str_replace('&#96;', '`', $sqlinput);
 	if (!$sqlinput) catcherror ($lna[806]);
 	$sqlinput=str_replace('[db]', $db_prefix, $sqlinput);
-	$result=db_query($sqlinput);
+	$result=$blog->query($sqlinput);
 	if (@db_num_rows($result)>0) {
 		$table_infos.="<table width=\"100%\"><tr><td><b>SQL: {$qinput[$i]}</b></td></tr></table><table width=\"100%\">";            	
 		$columns=mysql_num_fields($result);

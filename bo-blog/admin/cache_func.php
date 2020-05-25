@@ -118,9 +118,9 @@ function recache_adminlist () {
 }
 
 function recache_categories () {
-	global $db_prefix, $lna;
-	$result=db_query("SELECT * FROM `{$db_prefix}categories` {$plusquery} ORDER BY `cateorder`");
-	$result2=db_query("SELECT category,COUNT(*) FROM `{$db_prefix}blogs` GROUP BY `category`");
+	global $blog, $db_prefix, $lna;
+	$result=$blog->query("SELECT * FROM `{$db_prefix}categories` {$plusquery} ORDER BY `cateorder`");
+	$result2=$blog->query("SELECT category,COUNT(*) FROM `{$db_prefix}blogs` GROUP BY `category`");
 	while ($row=db_fetch_array($result2)) {
 		$result3[$row['category']]=$row['COUNT(*)'];
  	}

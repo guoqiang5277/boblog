@@ -926,8 +926,8 @@ function get_entry_url($id, $blogalias) { //To be discard
 function scheduledpublish() {
 	global $blog, $db_prefix, $nowtime;
 	$blog->query("UPDATE `{$db_prefix}blogs` SET `property`=0 WHERE `property`=4 AND `pubtime`<={$nowtime['timestamp']}");
-	$affn=db_affected_rows();
-	if ($affn>0) {
+	$affn=$blog->db_affected_rows();
+    if ($affn>0) {
 		if (!defined('REPLYSPECIAL')) define('REPLYSPECIAL', 1);
 		include_once('admin/cache_func.php');
 		recache_latestentries ();

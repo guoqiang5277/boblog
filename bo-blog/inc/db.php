@@ -24,19 +24,13 @@ if (!function_exists("mysqli_connect")) {
 }
 
 function db_connect($dbhost, $dbuser, $dbpw, $dbname='') {
-	global $db_410, $db_connected, $persistant_connect;
-//	if ($db_connected==1) return;
-//	if ($persistant_connect==1) {
-//		if(!@mysql_pconnect($dbhost, $dbuser, $dbpw)) {
-//			db_halt('Can not connect to MySQL server');
-//		}
-//	} else {
+	global $db_410;
+
     $con = mysqli_connect($dbhost, $dbuser, $dbpw);
 		if(!$con) {
 			db_halt($con,'Can not connect to MySQL server');
 		}
-//	}
-	$db_connected=1;
+
 	if (!empty($dbname)) {
 		$a_result=mysqli_select_db($con,$dbname);
 		if ($a_result) {

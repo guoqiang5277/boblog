@@ -156,12 +156,12 @@ if ($job=='pass' || $job=='block') {
 	if (count($repid)>0) {
 		if ($job=='pass') {
 			$blog->query("UPDATE `{$db_prefix}messages` SET `reproperty`=`reproperty`-2  WHERE {$querypass}");
-			$countreps=db_affected_rows();
+			$countreps=$blog->db_affected_rows();
 			$blog->query("UPDATE `{$db_prefix}counter` SET `messages`=`messages`+$countreps");
 			$fetchURL='admin.php?go=message_censor';
 		} else {
 			$blog->query("UPDATE `{$db_prefix}messages` SET `reproperty`=`reproperty`+2  WHERE {$querypass}");
-			$countreps=db_affected_rows();
+			$countreps=$blog->db_affected_rows();
 			$blog->query("UPDATE `{$db_prefix}counter` SET `messages`=`messages`-$countreps");
 			$fetchURL='admin.php?go=message_default';
 		}
