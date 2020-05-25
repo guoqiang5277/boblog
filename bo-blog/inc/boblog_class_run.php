@@ -19,24 +19,27 @@ class boblog {
 
 	function connectdb() {
 		global $db_connected, $db_server, $db_username, $db_password, $db_name;
-		db_connect($db_server, $db_username, $db_password, $db_name);
+		$con = db_connect($db_server, $db_username, $db_password, $db_name);
 		$db_connected=1;
 	}
 
 	function getsinglevalue($tablename) {
-		$result=db_query("SELECT * FROM `$tablename` LIMIT 0,1");
+	    global $con;
+		$result=db_query($con,"SELECT * FROM `$tablename` LIMIT 0,1");
 		$fetchresult=db_fetch_array($result);
 		return $fetchresult;
 	}
 
 	function getbyquery($query) {
-		$result=db_query($query);
+        global $con;
+		$result=db_query($con,$query);
 		$fetchresult=db_fetch_array($result);
 		return $fetchresult;
 	}
 
 	function getgroupbyquery($query) {
-		$result=db_query($query);
+        global $con;
+		$result=db_query($con,$query);
 		$i=0;
 		while ($row=db_fetch_array($result)) {
 			while (@list($key, $val)=@each($row)) {
@@ -48,7 +51,8 @@ class boblog {
 	}
 
 	function getarraybyquery($query) {
-		$result=db_query($query);
+        global $con;
+        $result=db_query($con,$query);
 		$i=0;
 		while ($row=db_fetch_array($result)) {
 			while (@list($key, $val)=@each($row)) {
@@ -60,12 +64,14 @@ class boblog {
 	}
 
 	function query($myquery) {
-		$result=db_query($myquery);
+        global $con;
+        $result=db_query($con,$myquery);
 		return $result;
 	}
 
 	function countbyquery($myquery) {
-		$result=db_query($myquery);
+        global $con;
+        $result=db_query($con,$myquery);
 		$row=db_fetch_row($result);
 		return $row[0];
 	}

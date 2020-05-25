@@ -22,7 +22,8 @@ if (file_exists('install/install.php')) {
 
 error_reporting(E_ERROR | E_WARNING | E_PARSE);
 unregister_GLOBALS(); //When register_globals=On
-@set_magic_quotes_runtime (0);
+//@set_magic_quotes_runtime (0);
+ini_set("magic_quotes_runtime", 0);
 $mqgpc_status=get_magic_quotes_gpc();
 define("VALIDREQUEST",1);
 if (!defined('allowCache')) {
