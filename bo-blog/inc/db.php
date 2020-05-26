@@ -43,7 +43,7 @@ function db_connect($dbhost, $dbuser, $dbpw, $dbname='') {
 function db_select_db($con,$dbname) {
 	$a_result=mysqli_select_db($con,$dbname);
 	if ($a_result) {
-		if (mysqli_get_server_info($con,)>='4.1.0') mysqli_query($con,"SET NAMES 'utf8'");
+		if (mysqli_get_server_info($con)>='4.1.0') mysqli_query($con,"SET NAMES 'utf8'");
 	}
 	return $a_result;
 }

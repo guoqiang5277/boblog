@@ -107,7 +107,7 @@ if ($flset['avatar']!=1)  $admin_item["misc"]["avatar"]=$lna[32];
 $admin_item["misc"]+=array("sessiondir"=>$lna[935], "urlrewrite"=>$lna[527]);
 
 $admin_item["user"]=array("usergroup"=>$lna[33], "users"=>$lna[8], "add"=>$lna[34]);
-$admin_item["carecenter"]=array("recache"=>$lna[35], "adminattach"=>$lna[36], "mysql"=>MySQL, "export"=>$lna[37], "import"=>$lna[38]);
+$admin_item["carecenter"]=array("recache"=>$lna[35], "adminattach"=>$lna[36], "mysql"=>"MySQL", "export"=>$lna[37], "import"=>$lna[38]);
 
 
 foreach ($admin_item as $k=>$v) {

@@ -23,11 +23,11 @@ $backtorefreshcache="{$lna[866]}|admin.php?go=carecenter";
 $prefseccounter=0;
 
 if (!$job) $job='default';
-
+global $blog;
 if ($job=='default') {
 	$phpver=PHP_VERSION;
 	$phpos=PHP_OS.' '.$_SERVER['SERVER_SOFTWARE'];
-	$mysqlver=@mysql_get_server_info();
+	$mysqlver=$blog->getMySqlServerInfo();
 	if (function_exists("gd_info")) {
 		$tmp_gd_info=gd_info();
 		$gdver=$tmp_gd_info["GD Version"];
@@ -198,7 +198,7 @@ if ($job=='phpinfo') {
 if ($job=='dbstat') {
 	$results_t=$blog->query("SHOW TABLE STATUS");
 	$table_infos="<table width=\"100%\"><tr class='admintitle'><td><b>{$lna[58]}</b></td><td><b>{$lna[59]}</b></td><td><b> 	{$lna[60]}</b></td><td><b>{$lna[61]}</b></td></tr>";
-	while (false!==($line_t=db_fetch_array($results_t)) && strstr($line_t['Name'], $db_prefix)) {
+	while (false!==($line_t=$blog->db_fetch_array($results_t)) && strstr($line_t['Name'], $db_prefix)) {
 		$table_infos .="<tr><td>{$line_t['Name']}</td><td>{$line_t['Rows']}</td>	<td>".round($line_t['Data_length']/1024, 2)." KB</td><td>".round($line_t['Index_length']/1024, 2)." KB</td></tr>";
 		$datalengthall+=$line_t['Data_length'];
 		$indexlengthall+=$line_t['Index_length'];

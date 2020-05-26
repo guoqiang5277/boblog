@@ -162,7 +162,7 @@ if ($job=='censor' || $job=='default') {
 		$param2=2;
 		$totalvolume=$statistics['replies'];
 	} 
-	for ($i=0; $i<count($detail_array); $i++) {
+	for ($i=0; $i<count((array)$detail_array); $i++) {
 		$tmp_tm=gmdate('Y/m/d H:i', $detail_array[$i]['reptime']+3600*$config['timezone']);
 		$detail_array[$i]['repcontent']=msubstr($detail_array[$i]['repcontent'], 0, 120);
 		$tablebody.="<tr class='visibleitem'><td align='center'><input type='checkbox' name='selid[]' id='selid[]' value='{$detail_array[$i]['repid']}-{$detail_array[$i]['blogid']}'></td><td>{$detail_array[$i]['replier']}</td><td>{$tmp_tm}</td><td align='left' width=50%><a href='".getlink_entry($detail_array[$i]['blogid'], '')."' target='_blank' title='{$lna[356]}'>{$detail_array[$i]['repcontent']}</a></td><td align='center'><a href='javascript: ensuredel(\"{$detail_array[$i]['repid']}-{$detail_array[$i]['blogid']}\", \"{$param2}\");'><img src='admin/theme/{$themename}/del.gif' alt='{$lna[78]}' title='{$lna[78]}' border='0'></a></td><td align='center'><a href=\"javascript: simulateFormSubmit('admin.php?go=reply_{$address}_{$detail_array[$i]['repid']}-{$detail_array[$i]['blogid']}')\"><img src='admin/theme/{$themename}/{$picture}.gif' alt='$titles' title='$titles' border='0'></a></td></tr>";

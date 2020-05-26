@@ -98,6 +98,14 @@ class boblog {
         $result=db_affected_rows($this->getCon());
         return $result;
     }
+    function getMySqlServerInfo(){
+	    $result = mysqli_get_server_info($this->getCon());
+	    return $result;
+    }
+    function db_fetch_array($query, $result_type = MYSQLI_ASSOC) {
+        return db_fetch_array($query, $result_type);
+    }
+
 }
 
 class template {
