@@ -384,7 +384,7 @@ function safe_invert($string, $html=0) { //Transfer the converted words into edi
 		$string = str_replace("<br/>","\r",$string);
 		$string = str_replace("&nbsp;"," ",$string);
 		$string = str_replace("&","&amp;",$string);
-		$string=preg_replace("/\[code\](.+?)\[\/code\]/ise", "'[code]'.str_replace('&amp;', '&', '\\1').'[/code]'", $string);
+		$string=preg_replace("/\[code\](.+?)\[\/code\]/is", "'[code]'.str_replace('&amp;', '&', '\\1').'[/code]'", $string);
 	}
 	$string = str_replace("&nbsp;"," ",$string);
 	return $string;
@@ -670,7 +670,7 @@ function check_ip ($ip, $iparray) {
 }
 
 function mystrtolower ($str) { //strtolower function that works fine with Chinese characters
-	$str=preg_replace("/([A-Z]+)/e", "strtolower('\\1')", $str);
+	$str=preg_replace("/([A-Z]+)/", "strtolower('\\1')", $str);
 	return $str;
 }
 

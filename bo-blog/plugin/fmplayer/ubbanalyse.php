@@ -1,6 +1,6 @@
 <?php
 function plugin_fmplayer_run($str) { 
-  $str=preg_replace("/\s*\[fmp(,id=.+?)?(,url=.+?)?\](.*?)\[\/fmp\]\s*/ise", "makeFMPlayer('\\1', '\\2', '\\3')", $str);
+  $str=preg_replace("/\s*\[fmp(,id=.+?)?(,url=.+?)?\](.*?)\[\/fmp\]\s*/is", "makeFMPlayer('\\1', '\\2', '\\3')", $str);
   return $str;
 }
 function makeFMPlayer($tid, $url, $str) {

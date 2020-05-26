@@ -25,15 +25,15 @@ $includeFile='';
 
 $RewriteRules=$RedirectTo=array();
 
-$RewriteRules[]="/page\/([0-9]+)\/([0-9]+)\/?/e";
-$RewriteRules[]="/starred\/([0-9]+)\/?([0-9]+)?\/?/e";
-$RewriteRules[]="/category\/([a-z|A-Z|0-9|_|-]+)\/?([0-9]+)?\/?([0-9]+)?\/?/e";
-$RewriteRules[]="/archiver\/([0-9]+)\/([0-9]+)\/?([0-9]+)?\/?([0-9]+)?\/?/e";
-$RewriteRules[]="/date\/([0-9]+)\/([0-9]+)\/([0-9]+)\/?([0-9]+)?\/?([0-9]+)?\/?/e";
-$RewriteRules[]="/user\/([0-9]+)\/?/e";
-$RewriteRules[]="/component\/id\/([0-9]+)\/?/e";
-$RewriteRules[]="/component\/([a-z|A-Z|0-9|_|-]+)\/?/e";
-$RewriteRules[]="/tags\/([a-z|A-Z|0-9|_|-|%]+)\/?([0-9]+)?\/?([0-9]+)?\/?/e";
+$RewriteRules[]="/page\/([0-9]+)\/([0-9]+)\/?/";
+$RewriteRules[]="/starred\/([0-9]+)\/?([0-9]+)?\/?/";
+$RewriteRules[]="/category\/([a-z|A-Z|0-9|_|-]+)\/?([0-9]+)?\/?([0-9]+)?\/?/";
+$RewriteRules[]="/archiver\/([0-9]+)\/([0-9]+)\/?([0-9]+)?\/?([0-9]+)?\/?/";
+$RewriteRules[]="/date\/([0-9]+)\/([0-9]+)\/([0-9]+)\/?([0-9]+)?\/?([0-9]+)?\/?/";
+$RewriteRules[]="/user\/([0-9]+)\/?/";
+$RewriteRules[]="/component\/id\/([0-9]+)\/?/";
+$RewriteRules[]="/component\/([a-z|A-Z|0-9|_|-]+)\/?/";
+$RewriteRules[]="/tags\/([a-z|A-Z|0-9|_|-|%]+)\/?([0-9]+)?\/?([0-9]+)?\/?/";
 
 $RedirectTo[]="loadURL('index.php', array('mode'=>'\\1', 'page'=>'\\2'));";
 $RedirectTo[]="loadURL('star.php', array('mode'=>'\\1', 'page'=>'\\2'));";

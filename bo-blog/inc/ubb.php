@@ -27,29 +27,29 @@ function convert_ubb ($str, $advanced=0, $inrss=0) {
 
 	//[IMG]
 	if ($advanced==1) {
-		$str=preg_replace("/\[url=([^\[]*)\]\[img( align=L| align=M| align=R)?( width=[0-9]+)?( height=[0-9]+)?\]\s*(\S+?)\s*\[\/img\]\[\/url\]/ise","makeimgwithurl('\\1', '\\2', '\\3', '\\4', '\\5', {$inrss})",$str);
-		$str=preg_replace("/\[img( align=L| align=M| align=R)?( width=[0-9]+)?( height=[0-9]+)?\]\s*(\S+?)\s*\[\/img\]/ise","makeimg('\\1', '\\2', '\\3', '\\4', {$inrss})",$str);
+		$str=preg_replace("/\[url=([^\[]*)\]\[img( align=L| align=M| align=R)?( width=[0-9]+)?( height=[0-9]+)?\]\s*(\S+?)\s*\[\/img\]\[\/url\]/is","makeimgwithurl('\\1', '\\2', '\\3', '\\4', '\\5', {$inrss})",$str);
+		$str=preg_replace("/\[img( align=L| align=M| align=R)?( width=[0-9]+)?( height=[0-9]+)?\]\s*(\S+?)\s*\[\/img\]/is","makeimg('\\1', '\\2', '\\3', '\\4', {$inrss})",$str);
 	} else {
-		$str=preg_replace("/\[img( align=L| align=M| align=R)?( width=[0-9]+)?( height=[0-9]+)?\]\s*(\S+?)\s*\[\/img\]/ise","makeimginrss('\\4')",$str);
+		$str=preg_replace("/\[img( align=L| align=M| align=R)?( width=[0-9]+)?( height=[0-9]+)?\]\s*(\S+?)\s*\[\/img\]/is","makeimginrss('\\4')",$str);
 	}
 
-	if ($mbcon['countdownload']=='1' && $inrss==0) $str=preg_replace(array("/\[sfile\]\s*\[attach\]([0-9]+)\[\/attach\]\s*\[\/sfile\]/ise", "/\[file\]\s*\[attach\]([0-9]+)\[\/attach\]\s*\[\/file\]/ise"), array("makedownload('\\1', 1, 0, true)", "makedownload('\\1', 0, 0, true)"), $str);
+	if ($mbcon['countdownload']=='1' && $inrss==0) $str=preg_replace(array("/\[sfile\]\s*\[attach\]([0-9]+)\[\/attach\]\s*\[\/sfile\]/is", "/\[file\]\s*\[attach\]([0-9]+)\[\/attach\]\s*\[\/file\]/ise"), array("makedownload('\\1', 1, 0, true)", "makedownload('\\1', 0, 0, true)"), $str);
 	$str=preg_replace("/\[attach\]([0-9]+)\[\/attach\]/is", "attachment.php?fid=\\1", $str);
-	$str=preg_replace("/\[sfile\]\s*(\S+?)\s*\[\/sfile\]/ise", "makedownload('\\1', 1, $inrss, false)", $str);
-	$str=preg_replace("/\[file\]\s*(\S+?)\s*\[\/file\]/ise", "makedownload('\\1', 0, $inrss, false)", $str);
+	$str=preg_replace("/\[sfile\]\s*(\S+?)\s*\[\/sfile\]/is", "makedownload('\\1', 1, $inrss, false)", $str);
+	$str=preg_replace("/\[file\]\s*(\S+?)\s*\[\/file\]/is", "makedownload('\\1', 0, $inrss, false)", $str);
 
 	//Auto add url link
 	if ($mbcon['autoaddlink']==1) $str=preg_replace("/(?<=[^\]a-z0-9-=\"'\\/])((https?|ftp|gopher|news|telnet|rtsp|mms|callto|ed2k):\/\/|www\.)([a-z0-9\/\-_+=.~!%@?#%&;:$\\()|]+)/i", "[autourl]\\1\\3[/autourl]", $str);
 
 	
 	$regubb_search = array(
-				"/\[size=([^\[\<]+?)\](.+?)\[\/size\]/ie",
-				"/\[tbl( width=[0-9]+)?(%)?( bgcolor=[^ ]*)?( border=[^ ]*)?\](.+?)\[\/tbl\]/ise",
+				"/\[size=([^\[\<]+?)\](.+?)\[\/size\]/i",
+				"/\[tbl( width=[0-9]+)?(%)?( bgcolor=[^ ]*)?( border=[^ ]*)?\](.+?)\[\/tbl\]/is",
 				"/\s*\[quote\][\n\r]*(.+?)[\n\r]*\[\/quote\]\s*/is",
 				"/\s*\[quote=(.+?)\][\n\r]*(.+?)[\n\r]*\[\/quote\]\s*/is",
-				"/\s*\[code\][\n\r]*(.+?)[\n\r]*\[\/code\]\s*/ie",
-				"/\[autourl\]([^\[]*)\[\/autourl\]/ie",
-				"/\[url\]([^\[]*)\[\/url\]/ie",
+				"/\s*\[code\][\n\r]*(.+?)[\n\r]*\[\/code\]\s*/i",
+				"/\[autourl\]([^\[]*)\[\/autourl\]/i",
+				"/\[url\]([^\[]*)\[\/url\]/i",
 				"/\[url=www.([^\[\"']+?)\](.+?)\[\/url\]/is",
 				"/\[url=([^\[]*)\](.+?)\[\/url\]/is",
 				"/\[email\]([^\[]*)\[\/email\]/is",
@@ -63,7 +63,7 @@ function convert_ubb ($str, $advanced=0, $inrss=0) {
 				"/\[strike\](.+?)\[\/strike\]/i",
 				"/\[sup\](.+?)\[\/sup\]/i",
 				"/\[sub\](.+?)\[\/sub\]/i",
-				"/\s*\[php\][\n\r]*(.+?)[\n\r]*\[\/php\]\s*/ie"
+				"/\s*\[php\][\n\r]*(.+?)[\n\r]*\[\/php\]\s*/i"
 	);
 	$regubb_replace =  array(
 				"makefontsize('\\1', '\\2')",
@@ -92,7 +92,7 @@ function convert_ubb ($str, $advanced=0, $inrss=0) {
 
 	//Multimedia Objects, dangerous, so visitors shall never be allowed to post such an object directly
 	if ($advanced==1) {
-		$str =($inrss==0) ?  preg_replace("/\[(wmp|swf|real|flv)=([^\[\<]+?),([^\[\<]+?)\]\s*([^\[\<\r\n]+?)\s*\[\/(wmp|swf|real|flv)\]/ies", "makemedia('\\1', '\\4', '\\2', '\\3')", $str) : preg_replace("/\[(wmp|swf|real|flv)=([^\[\<]+?),([^\[\<]+?)\]\s*([^\[\<\r\n]+?)\s*\[\/(wmp|swf|real|flv)\]/is", "<br/>{$lnc[267]}<br/>", $str);
+		$str =($inrss==0) ?  preg_replace("/\[(wmp|swf|real|flv)=([^\[\<]+?),([^\[\<]+?)\]\s*([^\[\<\r\n]+?)\s*\[\/(wmp|swf|real|flv)\]/is", "makemedia('\\1', '\\4', '\\2', '\\3')", $str) : preg_replace("/\[(wmp|swf|real|flv)=([^\[\<]+?),([^\[\<]+?)\]\s*([^\[\<\r\n]+?)\s*\[\/(wmp|swf|real|flv)\]/is", "<br/>{$lnc[267]}<br/>", $str);
 		$str=plugin_walk('ubbanalyseadvance', $str);
 	}
 	return $str;

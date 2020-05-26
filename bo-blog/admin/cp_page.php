@@ -36,7 +36,7 @@ if ($job=='editpage' || $job=='restore') {
 			$cancel=$lna[127];
 		}
 		$records['pagecontent']=safe_invert($records['pagecontent'], $records['htmlstat']);
-		$records['pagecontent']=preg_replace("/\[php\](.+?)\[\/php\]/ise", "phpcode4('\\1')", $records['pagecontent']);
+		$records['pagecontent']=preg_replace("/\[php\](.+?)\[\/php\]/is", "phpcode4('\\1')", $records['pagecontent']);
 	}
 }
 
@@ -181,12 +181,12 @@ if ($job=='store' || $job=='restore') {
 		$content=call_user_func ($callaftersubmit, $content);
 	}
 
-	$content=preg_replace("/\[php\](.+?)\[\/php\]/ise", "phpcode3('\\1')", $content);
+	$content=preg_replace("/\[php\](.+?)\[\/php\]/is", "phpcode3('\\1')", $content);
 	if ($htmlstat!=1 || $permission['Html']!=1) {
-		$content=preg_replace("/\[code\](.+?)\[\/code\]/ise", "phpcode2('\\1')", $content);
+		$content=preg_replace("/\[code\](.+?)\[\/code\]/is", "phpcode2('\\1')", $content);
 		$content=safe_convert($content, 0, 1);
 	} else {
-		$content=preg_replace("/\[code\](.+?)\[\/code\]/ise", "phpcode('\\1')", $content);
+		$content=preg_replace("/\[code\](.+?)\[\/code\]/is", "phpcode('\\1')", $content);
 		$content=safe_convert($content, 1, 1);
 	}
 

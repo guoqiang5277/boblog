@@ -146,7 +146,7 @@ class template {
 	function publish ($contentstr, $screen=false) {
 		global $tptvalue;
 		$globalvar=array();
-		preg_replace("/<!--global:{(.+?)}-->/ie", "\$globalvar['\\1']=\$tptvalue['\\1']", $contentstr);
+		preg_replace("/<!--global:{(.+?)}-->/i", "\$globalvar['\\1']=\$tptvalue['\\1']", $contentstr);
 		while (@list($parser, $value) = @each ($globalvar)) {
 			$contentstr=str_replace("<!--global:{".$parser."}-->", $value, $contentstr);
 		}
