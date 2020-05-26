@@ -19,7 +19,7 @@ require_once ("../data/config.php");
 if ($db_defaultsessdir!=1) session_save_path("../{$db_tmpdir}");
 session_cache_limiter("private, must-revalidate");
 session_start();
-session_register('code');
+//session_register('code');
 $_SESSION['code'] = "";
 $width = "40";//Í¼Æ¬¿í
 $height = "15";//Í¼Æ¬¸ß
@@ -49,13 +49,14 @@ if($noise == true) setnoise();
 $_SESSION['code'] = $code;
 $bordercolor = getcolor($bordercolor); 
 if($border==true) imageRectangle($image, 0, 0, $width-1, $height-1, $bordercolor);
+ob_clean();
 header("Content-type: image/png");
 imagePng($image);
 imagedestroy($image);
 function getcolor($color)
 {
      global $image;
-     $color = eregi_replace ("^#","",$color);
+     $color = preg_replace ("/^#/","",$color);
      $r = $color[0].$color[1];
      $r = hexdec ($r);
      $b = $color[2].$color[3];
