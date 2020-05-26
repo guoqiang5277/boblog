@@ -232,7 +232,7 @@ if ($job=='deleteblog' || $job=='deletedraft') {
 
 if ($job=='draft') {
 	$detail_array=$blog->getgroupbyquery("SELECT * FROM `{$db_prefix}blogs` WHERE `property`>=3 AND `blogid`>-1 ORDER BY `pubtime` DESC");
-	if (count($detail_array)==0) $tablebody.="<tr class='visibleitem'><td colspan='9' align='center' height='100'>{$lna[338]}</td></tr>";
+	if (count((array)$detail_array)==0) $tablebody.="<tr class='visibleitem'><td colspan='9' align='center' height='100'>{$lna[338]}</td></tr>";
 	else {
 	for ($i=0; $i<count($detail_array); $i++) {
 		$addclass=($i%2==1) ? 'hiddenitem' : 'visibleitem';
@@ -260,7 +260,7 @@ $display_overall_plus= <<<eot
 {$tablebody}
 eot;
 
-if (count($detail_array)>0) $display_overall_plus.= <<<eot
+if (count((array)$detail_array)>0) $display_overall_plus.= <<<eot
 <tr><td colspan=7><a href="#unexist" onclick="checkallbox('f_s', 'checked');">{$lna[247]}</a> | <a href="#unexist" onclick="checkallbox('f_s', '');">{$lna[248]}</a></td></tr>
 <tr><td colspan=7 height=20></td></tr>
 <tr class="adminoption"><td colspan=7>{$lna[249]}{$lna[249]}<input type=radio name=opt value='del'>{$lna[78]} <input type=radio name=opt value='publish'>{$lna[340]} <input type=button value="{$lna[64]}" class='formbutton' onclick="adminSubmitAjax('f_s');">
@@ -344,7 +344,7 @@ if ($job=='pagewrite') {
 if ($job=="pagemanage") {
 	$start_id=($page-1)*$adminitemperpage;
 	$detail_array=$blog->getgroupbyquery("SELECT * FROM `{$db_prefix}pages` ORDER BY `pagetime` DESC LIMIT $start_id, $adminitemperpage");
-	for ($i=0; $i<count($detail_array); $i++) {
+	for ($i=0; $i<count((array)$detail_array); $i++) {
 		$tmp_tm=gmdate('Y/m/d H:i', $detail_array[$i]['pagetime']+3600*$config['timezone']);
 		if ($i%2==0) $addclass='hiddenitem';
 		else $addclass='visibleitem';

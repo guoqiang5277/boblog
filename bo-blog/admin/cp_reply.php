@@ -199,7 +199,7 @@ if ($job=='tb' || $job=='tbcensor') {
 	$tbproperty=($job=='tb' ) ? 4 : 5;
 	$tbactdel=($job=='tb' ) ? 'deltb' : 'tbnopass';
 	$detail_array=$blog->getgroupbyquery("SELECT * FROM `{$db_prefix}replies` WHERE `reproperty`={$tbproperty} ORDER BY `reptime` DESC  LIMIT $start_id, $adminitemperpage");
-	for ($i=0; $i<count($detail_array); $i++) {
+	for ($i=0; $i<count((array)$detail_array); $i++) {
 		$tmp_tm=gmdate('Y/m/d H:i', $detail_array[$i]['reptime']+3600*$config['timezone']);
 		$detail_array[$i]['repcontent']=msubstr($detail_array[$i]['repcontent'], 0, 120);
 		$tablebody.="<tr class='visibleitem'><td align='center'><input type='checkbox' name='selid[]' id='selid[]' value='{$detail_array[$i]['repid']}-{$detail_array[$i]['blogid']}'></td><td><a href='{$detail_array[$i]['repurl']}' target='_blank' title='{$lna[358]}'>{$detail_array[$i]['replier']}</a><br>{$detail_array[$i]['repip']}</td><td>{$tmp_tm}</td><td align='left' width=50%><a href='".getlink_entry($detail_array[$i]['blogid'], '')."' target='_blank' title='{$lna[356]}'>{$detail_array[$i]['repcontent']}</a></td><td align='center'><a href='javascript: redirectcomfirm(\"admin.php?go=reply_{$tbactdel}_{$detail_array[$i]['repid']}-{$detail_array[$i]['blogid']}\");'><img src='admin/theme/{$themename}/del.gif' alt='{$lna[78]}' title='{$lna[78]}' border='0'></a></td>";

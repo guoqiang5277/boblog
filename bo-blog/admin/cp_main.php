@@ -831,7 +831,7 @@ if ($job=='refreshadminskinlist' || $job=='selectadminskin') {
 }
 
 if ($job=='funclock') {
-	if (sizeof($flset)<1) {
+	if (sizeof((array)$flset)<1) {
 		$flset=array('tags'=>0, 'weather'=>0, 'avatar'=>0, 'star'=>0, 'guestbook'=>0, 'modeselectable'=>0);
 	}
 

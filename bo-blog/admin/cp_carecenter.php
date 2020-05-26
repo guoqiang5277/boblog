@@ -239,7 +239,7 @@ if ($job=='adminattach') {
 	$detail_array=$blog->getgroupbyquery("SELECT * FROM `{$db_prefix}upload` {$queryplus} ORDER BY `uploadtime` DESC LIMIT {$start_id}, 51");
 	$numenries=$blog->countbyquery("SELECT COUNT(*) FROM `{$db_prefix}upload` {$queryplus}");
 
-	if (count($detail_array)!=0) {
+	if (count((array)$detail_array)!=0) {
 		foreach ($detail_array as $dafile) {
 			$time_t=date('Y-n-j', $dafile['uploadtime']);
 			$dataoriginalname=urldecode($dafile['originalname']);

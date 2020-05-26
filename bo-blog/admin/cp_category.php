@@ -341,7 +341,7 @@ if ($job=='combine') {
 if ($job=='tags') {
 	$all_tags=$blog->getgroupbyquery("SELECT * FROM `{$db_prefix}tags`");
 	$tablebody.="<tr>";
-	for ($i=0; $i<count($all_tags); $i++) {
+	for ($i=0; $i<count((array)$all_tags); $i++) {
 		$tablebody.="<td><input type=checkbox name='selid[]' value='{$all_tags[$i]['tagname']}'>{$all_tags[$i]['tagname']}</td>";
 		if ($i%5==4) $tablebody.="</tr><tr>";
 	}

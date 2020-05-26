@@ -97,7 +97,7 @@ if ($job=='add' || $job=='edit') { //Initialize public items
 	if ($flset['tags']!=1 && $permission['AddTag']==1) {
 		$exist_tags_tmp=$blog->getarraybyquery("SELECT * FROM `{$db_prefix}tags` ORDER BY `tagcounter` DESC LIMIT 50");
 		$exist_tags=$exist_tags_tmp['tagname'];
-		for ($i=0; $i<count($exist_tags); $i++) {
+		for ($i=0; $i<count((array)$exist_tags); $i++) {
 			$exist_tags[$i]="'".str_replace("'", '&#39;', $exist_tags[$i])."'";
 		}
 		$tag_js="<script type='text/javascript'>\nvar custom_array = new Array();\ncustom_array=[".@implode(',', $exist_tags)."];\n</script>\n<script type='text/javascript' src='images/js/autosuggestion.js'></script>";
