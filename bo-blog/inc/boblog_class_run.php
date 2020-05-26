@@ -861,7 +861,7 @@ class getblogs extends boblog {
 		global $lnc, $pageitems, $template;
 		$conxer=(strstr($returnurl, '?'))? '&amp;' : '?';
 		$totalvolume=($totalvolume=='auto') ? ($this->total_rows) : $totalvolume;
-		$this->total_pages=floor(($totalvolume-1)/$perpagevolume)+1;
+		$this->total_pages=max(1,floor(($totalvolume-1)/$perpagevolume)+1);
 		checkPageValidity ($page, $this->total_pages); //2008/5/25 Block abnormal pages
 		if (empty($this->total_pages)) return '';
 		$firstpagededuct=floor($numperline/2);

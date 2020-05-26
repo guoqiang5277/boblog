@@ -28,7 +28,7 @@ if ($job=='default') {
 	$alltags=$blog->getarraybyquery("SELECT tagid,tagname,tagcounter FROM `{$db_prefix}tags` ORDER BY {$sequence} DESC LIMIT {$start_id}, {$tagperpage}");
 	$maxtagcounter=$blog->countbyquery("SELECT MAX(tagcounter) FROM `{$db_prefix}tags`");
 	$alltagcounter=$blog->countbyquery("SELECT COUNT(tagcounter) FROM `{$db_prefix}tags`");
-	for ($i=0; $i<count($alltags['tagid']); $i++) {
+	for ($i=0; $i<count((array)$alltags['tagid']); $i++) {
 		$bit_tag_size=get_tag_size($alltags['tagcounter'][$i], $maxtagcounter);
 		if ($mbcon['tagunderlinetospace']==1) $eachtag=str_replace('_', ' ', $alltags['tagname'][$i]);
 		else $eachtag=$alltags['tagname'][$i];
