@@ -28,5 +28,5 @@ if ($replyrecords[0]['repid']!='') {
 } 
 if ($page==1) announcebar();
 else $ifannouncement='none';
-$bodymenu=$t->set('mainpage', array('pagebar'=>$innerpages, 'iftoppage'=>'none', 'ifbottompage'=>'display', 'ifannouncement'=>$ifannouncement, 'topannounce'=>$topannounce, 'mainpart'=>$section_body_main, 'currentpage'=>$pageitems['currentpage'], 'previouspageurl'=>$pageitems['previouspageurl'], 'nextpageurl'=>$pageitems['nextpageurl'], 'turningpages'=>$pageitems['turningpages'], 'totalpages'=>$pageitems['totalpages'], 'previouspageexists'=>$pageitems['previouspageexists'], 'nextpageexists'=>$pageitems['nextpageexists']));
+$bodymenu=@$t->set('mainpage', array('pagebar'=>$innerpages, 'iftoppage'=>'none', 'ifbottompage'=>'display', 'ifannouncement'=>$ifannouncement, 'topannounce'=>$topannounce, 'mainpart'=>$section_body_main, 'currentpage'=>$pageitems['currentpage'], 'previouspageurl'=>$pageitems['previouspageurl'], 'nextpageurl'=>$pageitems['nextpageurl'], 'turningpages'=>$pageitems['turningpages'], 'totalpages'=>$pageitems['totalpages'], 'previouspageexists'=>$pageitems['previouspageexists'], 'nextpageexists'=>$pageitems['nextpageexists']));
 $pagetitle="{$lnc[91]} - ";
