@@ -254,7 +254,7 @@ if ($v=='3') {
 	) ENGINE=MyISAM{$sqlcharset}";
 	$result=db_query($con,$setup_query);
 	if (!$result) template("<div class='log'>{$lang[1]}</div><div class='mes'>{$errmsg}</div>");
-	$setup_query="INSERT INTO `{$db_prefix}links` VALUES (0, 'Bo-Blog', 'http://www.bo-blog.com', '', 'Bo-Blog Official Site', 0, 0, 1, '', ''), (1, 'BMForum', 'http://www.bmforum.com', '', 'BMForum - {$lang[71]}', 0, 0, 1, '', '')";
+	$setup_query="INSERT INTO `{$db_prefix}links` VALUES (0, 'Bo-Blog', 'http://www.bo-blog.com', '', 'Bo-Blog旧官网地址，已经停止开发', 0, 0, 1, '', ''), (1, '问题上报地址', 'http://forum.y48.net/forum.php?mod=forumdisplay&fid=104', '', '问题上报地址', 0, 0, 1, '', ''), (2, '代码下载地址', 'https://github.com/guoqiang5277/boblog', '', '代码下载地址', 0, 0, 1, '', '')";
 	$result=db_query($con,$setup_query);
 	if (!$result) template("<div class='log'>{$lang[1]}</div><div class='mes'>{$errmsg}</div>");
 
