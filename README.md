@@ -3,6 +3,7 @@
   https://www.bo-blog.com/index.html<br>
   该网址是原作者准备替代boblog的项目，也好久没有开发了。<br>
   我的小站，http://bb.y48.net 欢迎来踩~~ <br>
+  报问题地址：https://github.com/guoqiang5277/boblog/issues ，看到后有时间会更新
 *** 
   个人比较喜欢旧的风格<br>
   但是随着时间的推移以及技术的革新，旧的采用的内容也逐渐跟不上步伐了<br>

@@ -30,7 +30,7 @@ $lang[27]='管理员密码：';
 $lang[28]='Blog名称：';
 $lang[29]='Blog描述语：';
 $lang[30]='测试日志';
-$lang[31]='[b]由于波波官方已经停止开发，这个版本是业余时间去做的，不专业之处，还请指出来。[/b]<ul><li>问题报告地址：[url=http://forum.y48.net/forum.php?mod=forumdisplay&fid=104][color=#0000FF]http://forum.y48.net/forum.php?mod=forumdisplay&fid=104[/color][/url]</li>
+$lang[31]='[b]由于波波官方已经停止开发，这个版本是业余时间去做的，不专业之处，还请指出来。[/b]<ul><li>问题报告地址：[url=https://github.com/guoqiang5277/boblog/issues][color=#0000FF]https://github.com/guoqiang5277/boblog/issues[/color][/url]</li>
 <li>程序代码下载地址：[url=https://github.com/guoqiang5277/boblog]https://github.com/guoqiang5277/boblog[/url]</li></ul>[b]日志：20200526[/b]<ul><li>1、新增了对php7.x的兼容。</li><li>2、优化了部分数据结构。</li></ul><br><br>您好，感谢您选择使用[acronym=一款基于PHP和MySQL的个人blog程序]Bo-Blog[/acronym]。<br/><br/><ul><li> [b]<u>国内首家</u> 打破传统分类方式 —— 主题随意贴(Tags、标签) [/b]<br/>只要发帖时指定一个 Tag，就可以令帖子联系更紧密！</li><li> [b]先进的 AJAX 技术 普遍用于发帖和浏览[/b]<br/>快速翻页浏览、快速回复，一切如飞。</li><li> [b]<u>国内首家</u> 论坛邀请注册方式[/b]<br/>论坛用户可以通过自己的努力邀请其他人加入！</li><li> [b]根据 XHTML1.0 + CSS 标准构建程序[/b]<br/>论坛程序完全符合W3C国际标准，风格制作更简单。</li><li> [b]<u>国内首家</u> 可视化发帖，让发帖更轻松[/b]<br/>通过可视化发帖，方便、安全地张贴想要的内容</li><li> [b]强大的后台管理，方便的快速定位[/b]<br/>通过论坛程序内置的“我想”菜单方便找到你所想的</li><li>[b]高效的论坛性能[/b]<br/>论坛程序负载承受能力空前绝后</li><li> [b]<u>全球首家</u> 多附件同时上传、附件图文混排[/b]<br/>使用 BMForum 论坛程序,论坛发帖易如反掌</li><li> [b]<u>国内首家</u> 领先的多国语言 UTF-8 编码[/b]<br/>国际、港澳台交流更紧密</li><li>[b]强大的用户组权限控制系统[/b]<br/>所有用户根据论坛程序中的用户组权限识别权限</li></ul><br/>这是安装程序自动写入的一篇日志。您可以删除它。';
 $lang[32]='默认分类';
 $lang[33]='这是程序自动创建的分类。';
