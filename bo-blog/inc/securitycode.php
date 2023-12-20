@@ -2,17 +2,17 @@
 /* -----------------------------------------------------
 Bo-Blog 2 : The Blog Reloaded.
 <<A Bluview Technology Product>>
-½ûÖ¹Ê¹ÓÃWindows¼ÇÊÂ±¾ĞŞ¸ÄÎÄ¼ş£¬ÓÉ´ËÔì³ÉµÄÒ»ÇĞÊ¹ÓÃ²»Õı³£Ë¡²»½â´ğ£¡
+ç¦æ­¢ä½¿ç”¨Windowsè®°äº‹æœ¬ä¿®æ”¹æ–‡ä»¶ï¼Œç”±æ­¤é€ æˆçš„ä¸€åˆ‡ä½¿ç”¨ä¸æ­£å¸¸æ•ä¸è§£ç­”ï¼
 PHP+MySQL blog system.
 Code: Bob Shen
 Offical site: http://www.bo-blog.com
-Copyright (c) Bob Shen ÖĞ¹ú£­ÉÏº£
+Copyright (c) Bob Shen ä¸­å›½ï¼ä¸Šæµ·
 In memory of my university life
 ------------------------------------------------------- */
 
 //Security Code Image Generation
 //This part needs GD Library to be installed
-//Original Code: Ğ¡Öí»áÆø¹¦   http://guan8.net
+//Original Code: å°çŒªä¼šæ°”åŠŸ   http://guan8.net
 error_reporting(E_ERROR | E_WARNING | E_PARSE);
 require_once ("../data/config.php");
 
@@ -21,13 +21,13 @@ session_cache_limiter("private, must-revalidate");
 session_start();
 //session_register('code');
 $_SESSION['code'] = "";
-$width = "40";//Í¼Æ¬¿í
-$height = "15";//Í¼Æ¬¸ß
-$len = "4";//Éú³É¼¸Î»ÑéÖ¤Âë
-$bgcolor = "#ffffff";//±³¾°É«
-$noise = true;//Éú³ÉÔÓµã
-$noisenum = 10;//ÔÓµãÊıÁ¿
-$border = false;//±ß¿ò
+$width = "40";//å›¾ç‰‡å®½
+$height = "15";//å›¾ç‰‡é«˜
+$len = "4";//ç”Ÿæˆå‡ ä½éªŒè¯ç 
+$bgcolor = "#ffffff";//èƒŒæ™¯è‰²
+$noise = true;//ç”Ÿæˆæ‚ç‚¹
+$noisenum = 10;//æ‚ç‚¹æ•°é‡
+$border = false;//è¾¹æ¡†
 $bordercolor = "#000000";
 $image = imageCreate($width, $height);
 $back = getcolor($bgcolor);
