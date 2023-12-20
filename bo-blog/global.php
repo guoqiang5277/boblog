@@ -763,10 +763,10 @@ function zhgmdate ($timeformat, $timestamp) {
 	$factmonth=(string)$fact['mon'];
 	$factday=(string)$fact['mday'];
 	$factweek=$fact['wday'];
-	$sfact[0]=$zh_numbers[$factyear{0}].$zh_numbers[$factyear{1}].$zh_numbers[$factyear{2}].$zh_numbers[$factyear{3}].$zh_sybols[0];
-	$sfact[1]=($factmonth>=10) ? ($zh_numbers[10].$zh_numbers[$factmonth{1}].$zh_sybols[1]) : ($zh_numbers[$factmonth].$zh_sybols[1]);
+	$sfact[0]=$zh_numbers[$factyear[0]].$zh_numbers[$factyear[1]].$zh_numbers[$factyear[2]].$zh_numbers[$factyear[3]].$zh_sybols[0];
+	$sfact[1]=($factmonth>=10) ? ($zh_numbers[10].$zh_numbers[$factmonth[1]].$zh_sybols[1]) : ($zh_numbers[$factmonth].$zh_sybols[1]);
 	$sfact[1]=str_replace($zh_numbers[10].$zh_numbers[0], $zh_numbers[10], $sfact[1]);
-	$sfact[2]=($factday>=10) ? ($zh_numbers[$factday{0}].$zh_numbers[10].$zh_numbers[$factday{1}].$zh_sybols[2]) : ($zh_numbers[$factday].$zh_sybols[2]);
+	$sfact[2]=($factday>=10) ? ($zh_numbers[$factday[0]].$zh_numbers[10].$zh_numbers[$factday[1]].$zh_sybols[2]) : ($zh_numbers[$factday].$zh_sybols[2]);
 	$sfact[2]=str_replace($zh_numbers[1].$zh_numbers[10], $zh_numbers[10], $sfact[2]);
 	$sfact[2]=str_replace($zh_numbers[10].$zh_numbers[0], $zh_numbers[10], $sfact[2]);
 	$sfact[3]=$zh_weeks[$factweek];
