@@ -780,7 +780,7 @@ function encodetburl ($str, $outputjs=1) {
 	$rand=rand(0,9);
 	$newstr[0]=$rand;
 	for ($i=0; $i<strlen($str); $i++) {
-		$newstr[]=ord($str{$i})+$rand;
+		$newstr[]=ord($str[$i])+$rand;
 	}
 	$putstr=@implode('%', $newstr);
 	return $putstr;
