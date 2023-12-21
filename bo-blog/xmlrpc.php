@@ -2,11 +2,11 @@
 /* -----------------------------------------------------
 Bo-Blog 2 : The Blog Reloaded.
 <<A Bluview Technology Product>>
-½ûÖ¹Ê¹ÓÃWindows¼ÇÊÂ±¾ÐÞ¸ÄÎÄ¼þ£¬ÓÉ´ËÔì³ÉµÄÒ»ÇÐÊ¹ÓÃ²»Õý³£Ë¡²»½â´ð£¡
+ï¿½ï¿½Ö¹Ê¹ï¿½ï¿½Windowsï¿½ï¿½ï¿½Â±ï¿½ï¿½Þ¸ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½É´ï¿½ï¿½ï¿½Éµï¿½Ò»ï¿½ï¿½Ê¹ï¿½Ã²ï¿½ï¿½ï¿½ï¿½ï¿½Ë¡ï¿½ï¿½ï¿½ï¿½ï¿½
 PHP+MySQL blog system.
 Code: Bob Shen
 Offical site: http://www.bo-blog.com
-Copyright (c) Bob Shen ÖÐ¹ú£­ÉÏº£
+Copyright (c) Bob Shen ï¿½Ð¹ï¿½ï¿½ï¿½ï¿½Ïºï¿½
 In memory of my university life
 ------------------------------------------------------- */
 
@@ -409,7 +409,7 @@ function metaWeblog_getCategories ($values) {
 	global $config, $db_prefix;
 	$userdetail=check_user ($values['username'], $values['password']);
 	//Get Categories
-	$result=db_query("SELECT * FROM `{$db_prefix}categories` ORDER BY `cateorder`");
+	$result=$blog->query("SELECT * FROM `{$db_prefix}categories` ORDER BY `cateorder`");
 	while ($row=db_fetch_array($result)) {
 		$struct_body[]=make_xml_piece ("struct", array('description'=>"{$row['catename']}", 'htmlUrl'=>"{$config['blogurl']}/index.php?go=category_{$row['cateid']}", 'rssUrl'=>"{$config['blogurl']}/feed.php?go=category_{$row['cateid']}"));
 	}
@@ -460,7 +460,7 @@ function metaWeblog_newMediaObject ($values) { //2006-12-2 add support for uploa
 		//DB updating, new function in 2.1.0
 		$blog=new boblog;
 		$blog->query("INSERT INTO `{$db_prefix}upload` (fid,filepath,originalname,uploadtime,uploaduser) VALUES (null, \"attachment/{$targetfolder_ym}{$upload_filename}\", \"{$struct['name']}\", {$nowtime['timestamp']}, {$userdetail['userid']})");
-		$currentid=db_insert_id();
+		$currentid=$blog->db_insert_id();
 
 		if ($mbcon['wmenable']=='1') {	//Add watermark
 			$imgext_watermark=array('jpg', 'gif', 'png');

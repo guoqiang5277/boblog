@@ -105,6 +105,10 @@ class boblog {
     function db_fetch_array($query, $result_type = MYSQLI_ASSOC) {
         return db_fetch_array($query, $result_type);
     }
+    function db_insert_id() {
+        $id = db_insert_id($this->getCon());
+        return $id;
+    }
 
 }
 

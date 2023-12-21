@@ -91,7 +91,7 @@ if ($job=="doattach") {
 
 		//DB updating, new function in 2.1.0
 		$blog->query("INSERT INTO `{$db_prefix}upload` (fid,filepath,originalname,uploadtime,uploaduser) VALUES (null, \"attachment/{$targetfolder_ym}{$upload_filename}\", \"{$original_uploadname}\", {$nowtime['timestamp']}, {$userdetail['userid']})");
-		$currentid=db_insert_id();
+		$currentid=$blog->db_insert_id();
 
 		$upload_filename_list[]="{$targetfolder_ym}".str_replace('.', '*', $original_uploadname);
 		$upload_filename_list_insert[]="[attach]{$currentid}[/attach]";

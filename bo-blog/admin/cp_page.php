@@ -211,7 +211,7 @@ if ($job=='store' || $job=='restore') {
 		$query="INSERT INTO `{$db_prefix}pages` (pageid,pagetitle,pagecontent,pageauthor,pagetime,pageedittime,closesidebar,htmlstat,ubbstat,emotstat,pagealias) VALUES (null, '{$pagetitle}','{$content}','{$currentuserid}','{$finaltime}', 0, '{$closesidebar}','{$htmlstat}', '{$ubbstat}', '{$emotstat}', '{$pagealias}')";
 		$blog->query($query);
 
-		$currentid=db_insert_id();
+		$currentid=$blog->db_insert_id();
 		//Add shortcuts on the top ,shortcuttext,shortcuttarget
 		if ($addshortcut==1) {
 
