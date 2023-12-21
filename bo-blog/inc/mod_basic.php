@@ -362,6 +362,6 @@ eot;
 //[End]Search
 
 $blogitem['copyright']+=array('type'=>'html', 'code'=>" Powered by <a href=\"http://www.bo-blog.com\" target=\"_blank\">Bo-Blog {$blogversion}</a><span id=\"footer-security\"><a href=\"http://www.cnbct.org\" target=\"_blank\" title=\"Code detection by Bug.Center.Team\"><img src=\"images/others/detect.gif\" alt=\"Code detection by Bug.Center.Team\" border=\"0\" /></a></span>");
-$blogitem['mii']+=array('type'=>'link', 'url'=>'http://www.miibeian.gov.cn', 'text'=>'<br/>'.$mbcon['miinum'], 'target'=>'_blank');
+$blogitem['mii']+=array('type'=>'link', 'url'=>'https://beian.miit.gov.cn', 'text'=>'<br/>'.$mbcon['miinum'], 'target'=>'_blank');
 
 $blogitem['columnbreak']+=array('type'=>'block', 'name'=>'columnbreak', 'title'=>'1', 'content'=>'1', 'extend'=>1);

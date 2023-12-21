@@ -99,6 +99,7 @@ eot;
 $elements['displayfooter']=<<<eot
 	</div>
 		<div id="footer">
+		      {section_foot_components}
 		</div>
 	</div>
 </div>
