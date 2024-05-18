@@ -23,7 +23,7 @@ CREATE TABLE `boblog_upload` (
   PRIMARY KEY  (`fid`)
 ) ENGINE=MyISAM;
 
-INSERT INTO `boblog_mods` VALUES ('sidebar', 'columnbreak', '²à±ßÀ¸Ò»Óë²à±ßÀ¸¶şµÄ·Ö¸îÏß', '1', '1', 'system');
+INSERT INTO `boblog_mods` VALUES ('sidebar', 'columnbreak', 'ä¾§è¾¹æ ä¸€ä¸ä¾§è¾¹æ äºŒçš„åˆ†å‰²çº¿', '1', '1', 'system');
 
 ALTER TABLE `boblog_blogs` ADD `entrysummary` TEXT NULL ,
 ADD `comefrom` VARCHAR( 255 ) NULL ,
@@ -181,23 +181,23 @@ CHANGE `empty8` `empty8` TEXT NULL
 
 ====2.0.0.9.1127.0->2.0.0.9.1204.0
 SQL:
-ÎŞ
+æ— 
 
 ====2.0.0.9.1120.0->2.0.0.9.1127.0
 SQL:
-INSERT INTO `boblog_mods` VALUES ('sidebar', 'search', '²à±ßËÑË÷¿ò', '1', '10', 'system')
+INSERT INTO `boblog_mods` VALUES ('sidebar', 'search', 'ä¾§è¾¹æœç´¢æ¡†', '1', '10', 'system')
 
-ÎÄ¼ş£º
-É¾³ı data/cache_applylinks.php
+æ–‡ä»¶ï¼š
+åˆ é™¤ data/cache_applylinks.php
 
 ====2.0.0.9.1113.0->2.0.0.9.1120.0
 SQL:
 INSERT INTO `boblog_forbidden` VALUES ('', '', '', '', '', '', '', '')
-INSERT INTO `boblog_mods` VALUES ('sidebar', 'announcement', '²à±ß¹«¸æÀ¸', '1', '0', 'custom'), ('header', 'viewlinks', '²é¿´ËùÓĞÁ´½ÓµÄÁ´½Ó', '1', '7', 'system')
+INSERT INTO `boblog_mods` VALUES ('sidebar', 'announcement', 'ä¾§è¾¹å…¬å‘Šæ ', '1', '0', 'custom'), ('header', 'viewlinks', 'æŸ¥çœ‹æ‰€æœ‰é“¾æ¥çš„é“¾æ¥', '1', '7', 'system')
 
-ÆäËü£º
-data/modules Ôö¼ÓÒÔÏÂÒ»ĞĞÄÚÈİ
-$blogitem['announcement']=array('type'=>'block',	'name'=>'announcement', 'title'=>'¹«¸æ', 'content'=>'Ò»Ìõ²âÊÔ¹«¸æ', 'extend'=>1);
+å…¶å®ƒï¼š
+data/modules å¢åŠ ä»¥ä¸‹ä¸€è¡Œå†…å®¹
+$blogitem['announcement']=array('type'=>'block',	'name'=>'announcement', 'title'=>'å…¬å‘Š', 'content'=>'ä¸€æ¡æµ‹è¯•å…¬å‘Š', 'extend'=>1);
 
 ====2.0.0.9.1106.0->2.0.0.9.1113.0
 SQL:
@@ -211,7 +211,7 @@ ALTER TABLE `boblog_blogs` CHANGE `content` `content` MEDIUMTEXT NOT NULL
 ALTER TABLE `boblog_blogs` CHANGE `weather` `weather` TINYTEXT NOT NULL 
 ALTER TABLE `boblog_categories` ADD `cateicon` TINYTEXT NOT NULL AFTER `catemode` , ADD `cateurl` TEXT NOT NULL AFTER `cateicon`
 ALTER TABLE `boblog_blogs` CHANGE `empty1` `starred` INT( 5 ) NOT NULL DEFAULT '0'
-INSERT INTO `boblog_mods` ( `position` , `name` , `desc` , `active` , `order` , `func` ) VALUES ('header', 'starred', '²é¿´ÒÑ¼ÓĞÇ±êÈÕÖ¾', '1', '20', 'system')
+INSERT INTO `boblog_mods` ( `position` , `name` , `desc` , `active` , `order` , `func` ) VALUES ('header', 'starred', 'æŸ¥çœ‹å·²åŠ æ˜Ÿæ ‡æ—¥å¿—', '1', '20', 'system')
 
 ====2.0.0.9.1030.0->2.0.0.9.1106.0
 SQL:
@@ -225,11 +225,11 @@ CREATE TABLE `boblog_mods` (
 `order` INT( 5 ) NOT NULL ,
 `func` TEXT NOT NULL
 ) TYPE = MYISAM
-INSERT INTO `boblog_mods` VALUES ('header', 'index', 'Ê×Ò³Á´½Ó', '1', '1', 'system'), ('header', 'customrss', 'RSSÁ´½Ó', '1', '2', 'system'), ('header', 'login', 'µÇÈë/µÇ³öÁ´½Ó', '1', '3', 'system'), ('header', 'modpro', '±à¼­¸öÈË×ÊÁÏÁ´½Ó', '1', '4', 'system'), ('header', 'alltags', '²é¿´TagsÁĞ±íÁ´½Ó', '1', '5', 'system'), ('header', 'guestbook', 'ÁôÑÔ±¾Á´½Ó', '1', '6', 'system'), ('header', 'togglesidebar', '¿ª¹Ø²à±ßÀ¸Á´½Ó', '1', '7', 'system')
-INSERT INTO `boblog_mods` VALUES ('sidebar', 'category', '·ÖÀàÁĞ±í', '1', '8', 'system'), ('sidebar', 'calendar', 'ÈÕÀú', '1', '9', 'system'), ('sidebar', 'statistics', '¼òÒ×Í³¼ÆÊı¾İ', '1', '10', 'system'), ('sidebar', 'entries', '×îĞÂÈÕÖ¾', '1', '11', 'system'), ('sidebar', 'replies', '×îĞÂÆÀÂÛ', '1', '12', 'system'), ('sidebar', 'link', 'Á´½Ó×éºÍÁ´½Ó', '1', '13', 'system'), ('sidebar', 'archive', '¹éµµ', '1', '14', 'system'), ('sidebar', 'misc', 'ÔÓÏîÓëÆäËüĞÅÏ¢', '1', '15', 'system')
-INSERT INTO `boblog_mods` VALUES ('footer', 'copyright', '³ÌĞò°æÈ¨', '1', '16', 'system'), ('footer', 'mii', 'ĞÅÏ¢²úÒµ²¿ÍøÕ¾±¸°¸ºÅ', '1', '17', 'system')
+INSERT INTO `boblog_mods` VALUES ('header', 'index', 'é¦–é¡µé“¾æ¥', '1', '1', 'system'), ('header', 'customrss', 'RSSé“¾æ¥', '1', '2', 'system'), ('header', 'login', 'ç™»å…¥/ç™»å‡ºé“¾æ¥', '1', '3', 'system'), ('header', 'modpro', 'ç¼–è¾‘ä¸ªäººèµ„æ–™é“¾æ¥', '1', '4', 'system'), ('header', 'alltags', 'æŸ¥çœ‹Tagsåˆ—è¡¨é“¾æ¥', '1', '5', 'system'), ('header', 'guestbook', 'ç•™è¨€æœ¬é“¾æ¥', '1', '6', 'system'), ('header', 'togglesidebar', 'å¼€å…³ä¾§è¾¹æ é“¾æ¥', '1', '7', 'system')
+INSERT INTO `boblog_mods` VALUES ('sidebar', 'category', 'åˆ†ç±»åˆ—è¡¨', '1', '8', 'system'), ('sidebar', 'calendar', 'æ—¥å†', '1', '9', 'system'), ('sidebar', 'statistics', 'ç®€æ˜“ç»Ÿè®¡æ•°æ®', '1', '10', 'system'), ('sidebar', 'entries', 'æœ€æ–°æ—¥å¿—', '1', '11', 'system'), ('sidebar', 'replies', 'æœ€æ–°è¯„è®º', '1', '12', 'system'), ('sidebar', 'link', 'é“¾æ¥ç»„å’Œé“¾æ¥', '1', '13', 'system'), ('sidebar', 'archive', 'å½’æ¡£', '1', '14', 'system'), ('sidebar', 'misc', 'æ‚é¡¹ä¸å…¶å®ƒä¿¡æ¯', '1', '15', 'system')
+INSERT INTO `boblog_mods` VALUES ('footer', 'copyright', 'ç¨‹åºç‰ˆæƒ', '1', '16', 'system'), ('footer', 'mii', 'ä¿¡æ¯äº§ä¸šéƒ¨ç½‘ç«™å¤‡æ¡ˆå·', '1', '17', 'system')
 
-data/ÏÂĞÂÔö
+data/ä¸‹æ–°å¢
 usergroup3.php
 cache_categories.php
 modules.php
@@ -250,4 +250,4 @@ TRUNCATE TABLE `boblog_tags`
 
 FILE:
 unlink ("data/cache_tags.php");
-ÉÏ´« "data/cache_emot.php" CHMOD 777
+ä¸Šä¼  "data/cache_emot.php" CHMOD 777

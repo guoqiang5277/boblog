@@ -1,15 +1,15 @@
-2.03 to 2.10·ç¸ñÉı¼¶ÊÖ²á[07.08.29 Update] 
-ÃùĞ»Òõ¡¤¹í»ğ£¨http://404cn.com£©ÕûÀí
+2.03 to 2.10é£æ ¼å‡çº§æ‰‹å†Œ[07.08.29 Update] 
+é¸£è°¢é˜´Â·é¬¼ç«ï¼ˆhttp://404cn.comï¼‰æ•´ç†
 
- 2.10·ç¸ñ±£³ÖÁËÏòÏÂ¼æÈİµÄÌØĞÔ£¬ËùÒÔ¾É·ç¸ñ¼´Ê¹Ã»ÓĞÉı¼¶Ò²ÄÜÕı³£Ê¹ÓÃ¡£
-ÒÔÏÂ²Ù×÷ÇëÊ¹ÓÃEditplusµÈÖ§³ÖUTF-8µÄ±à¼­Æ÷½øĞĞĞŞ¸Ä£¬±£´æÊ±×¢Òâ±àÂëµÄÑ¡Ôñ¡£
+ 2.10é£æ ¼ä¿æŒäº†å‘ä¸‹å…¼å®¹çš„ç‰¹æ€§ï¼Œæ‰€ä»¥æ—§é£æ ¼å³ä½¿æ²¡æœ‰å‡çº§ä¹Ÿèƒ½æ­£å¸¸ä½¿ç”¨ã€‚
+ä»¥ä¸‹æ“ä½œè¯·ä½¿ç”¨Editplusç­‰æ”¯æŒUTF-8çš„ç¼–è¾‘å™¨è¿›è¡Œä¿®æ”¹ï¼Œä¿å­˜æ—¶æ³¨æ„ç¼–ç çš„é€‰æ‹©ã€‚
 
-elements.php²¿·Ö
+elements.phpéƒ¨åˆ†
 
-1.ĞÂÔöÄ£¿éviewpage
-±¾Ä£¿é×÷ÓÃÎª×Ô¶¨ÒåÒ³ÃæµÄÏÔÊ¾
+1.æ–°å¢æ¨¡å—viewpage
+æœ¬æ¨¡å—ä½œç”¨ä¸ºè‡ªå®šä¹‰é¡µé¢çš„æ˜¾ç¤º
 
-´ò¿ªelements.php£¬ÔÚ$elements['linkdiv']µÄeot;ºó²åÈë
+æ‰“å¼€elements.phpï¼Œåœ¨$elements['linkdiv']çš„eot;åæ’å…¥
 $elements['viewpage']=<<<eot
 <div class="pagebox">
  <div class="pagebox-title">
@@ -23,43 +23,43 @@ $elements['viewpage']=<<<eot
 </div>
 eot;
 
-±£´æ
+ä¿å­˜
 
-2.ĞÂÔö±êÇ©£¨·Ç±ØĞë£¬ÇëÑ¡ÔñĞÔÌí¼Ó£©
+2.æ–°å¢æ ‡ç­¾ï¼ˆéå¿…é¡»ï¼Œè¯·é€‰æ‹©æ€§æ·»åŠ ï¼‰
 
-$elements['excerpt']£¬$elements['excerptontop']£¬$elements['viewentry']ÇøÓò
-{entrysourcewithlink} ´øÁ´½ÓµÄÀ´Ô´
-{entrysource} À´Ô´Ãû³Æ /*a bug,may fix*/
-{entrysourcelink} À´Ô´Á´½Ó /*a bug,may fix*/
-{entrytbnumwithlink} ¿Éµã»÷µÄ´¿ÈÕÖ¾ÒıÓÃÊıÁ¿
-{adminlink} Êä³ö²»´ø|µÄ¹ÜÀí
+$elements['excerpt']ï¼Œ$elements['excerptontop']ï¼Œ$elements['viewentry']åŒºåŸŸ
+{entrysourcewithlink} å¸¦é“¾æ¥çš„æ¥æº
+{entrysource} æ¥æºåç§° /*a bug,may fix*/
+{entrysourcelink} æ¥æºé“¾æ¥ /*a bug,may fix*/
+{entrytbnumwithlink} å¯ç‚¹å‡»çš„çº¯æ—¥å¿—å¼•ç”¨æ•°é‡
+{adminlink} è¾“å‡ºä¸å¸¦|çš„ç®¡ç†
 
-$elements['displayside']ÇøÓò
-{section_side_components_one} Êä³öµÚÒ»¸ö²à±ßÀ¸µÄÄÚÈİ
-{section_side_components_two} Êä³öµÚ¶ş¸ö²à±ßÀ¸µÄÄÚÈİ
+$elements['displayside']åŒºåŸŸ
+{section_side_components_one} è¾“å‡ºç¬¬ä¸€ä¸ªä¾§è¾¹æ çš„å†…å®¹
+{section_side_components_two} è¾“å‡ºç¬¬äºŒä¸ªä¾§è¾¹æ çš„å†…å®¹
 
-globalÇøÓò£¬Ê¹ÓÃÊ±ĞèÒª¼ÓÉÏglobal
-{categoryplainshow} Êä³ö´¿ÎÄ×ÖµÄ·ÖÀà
+globalåŒºåŸŸï¼Œä½¿ç”¨æ—¶éœ€è¦åŠ ä¸Šglobal
+{categoryplainshow} è¾“å‡ºçº¯æ–‡å­—çš„åˆ†ç±»
 
-ÌØÊâ±êÇ©
-{pageID} ¿É½øĞĞ²»Í¬Ò³ÃæµÄcssÎ¢µ÷£¬Ö»ÓĞÈçÏÂÓÃ·¨
+ç‰¹æ®Šæ ‡ç­¾
+{pageID} å¯è¿›è¡Œä¸åŒé¡µé¢çš„csså¾®è°ƒï¼Œåªæœ‰å¦‚ä¸‹ç”¨æ³•
 <body id="{pageID}">
 
 
-±»ÒÅÍüµÄ±êÇ©
-entrydatemnamefull ÍêÕûĞÎÊ½Êä³öÈÕÖ¾Ó¢ÎÄÔÂ·İ
-entrydatemnameshort ËõĞ´ĞÎÊ½Êä³öÈÕÖ¾Ó¢ÎÄÔÂ·İ
+è¢«é—å¿˜çš„æ ‡ç­¾
+entrydatemnamefull å®Œæ•´å½¢å¼è¾“å‡ºæ—¥å¿—è‹±æ–‡æœˆä»½
+entrydatemnameshort ç¼©å†™å½¢å¼è¾“å‡ºæ—¥å¿—è‹±æ–‡æœˆä»½
 
-info.php²¿·Ö
-±¾ĞĞÓÃÓÚĞÂ¾ÉÄ£°åµÄÊ¶±ğ£¨¾ÉÄ£°å½«ÓÉ³ÌĞò²¹Æë²ĞÈ±µÄ²¿·Ö£©¡£²»½øĞĞ´Ë´¦µÄĞŞ¸ÄÒ²¿ÉÒÔÊ¹ÓÃentrysourceÖ®ÀàµÄĞÂ±êÇ©£¬µ«pageºÍcssÀïĞÂÔöµÄ²¿·Ö½«ÎŞĞ§£¬×ÜÊÇÊ¹ÓÃÏµÍ³Ä¬ÈÏ¡£
+info.phpéƒ¨åˆ†
+æœ¬è¡Œç”¨äºæ–°æ—§æ¨¡æ¿çš„è¯†åˆ«ï¼ˆæ—§æ¨¡æ¿å°†ç”±ç¨‹åºè¡¥é½æ®‹ç¼ºçš„éƒ¨åˆ†ï¼‰ã€‚ä¸è¿›è¡Œæ­¤å¤„çš„ä¿®æ”¹ä¹Ÿå¯ä»¥ä½¿ç”¨entrysourceä¹‹ç±»çš„æ–°æ ‡ç­¾ï¼Œä½†pageå’Œcssé‡Œæ–°å¢çš„éƒ¨åˆ†å°†æ— æ•ˆï¼Œæ€»æ˜¯ä½¿ç”¨ç³»ç»Ÿé»˜è®¤ã€‚
 
-´ò¿ªÓÚÄ©Î²²åÈë
+æ‰“å¼€äºæœ«å°¾æ’å…¥
 $template['sysver']='5.2';
 
-±£´æ
+ä¿å­˜
 
-styles.css²¿·Ö
-Ôö¼Ó±íÇé·ÖÒ³Ñ¡ÔñÑùÊ½£¬ÓÚÎÄ¼şÄ©Î²²åÈëÈçÏÂÄÚÈİ£¬ÑùÊ½ÄÚÈİÇë×ÔĞĞµ÷Õû
+styles.csséƒ¨åˆ†
+å¢åŠ è¡¨æƒ…åˆ†é¡µé€‰æ‹©æ ·å¼ï¼Œäºæ–‡ä»¶æœ«å°¾æ’å…¥å¦‚ä¸‹å†…å®¹ï¼Œæ ·å¼å†…å®¹è¯·è‡ªè¡Œè°ƒæ•´
 /* Emot Page Selection */
 #smileybuttons {
  text-align: right;
@@ -80,6 +80,6 @@ styles.css²¿·Ö
 }
 
 
-CSSÔö¼Ó·ÖÒ³spanÑùÊ½£¨¿ÉÑ¡£©
-.pagebar-mainbody ·ÖÒ³ÌõÀï´¿·ÖÒ³²¿·ÖµÄspan
-.pagebar-selections ·ÖÒ³ÌõÀï´¿½ø¶ÈÌõµÄspan
+CSSå¢åŠ åˆ†é¡µspanæ ·å¼ï¼ˆå¯é€‰ï¼‰
+.pagebar-mainbody åˆ†é¡µæ¡é‡Œçº¯åˆ†é¡µéƒ¨åˆ†çš„span
+.pagebar-selections åˆ†é¡µæ¡é‡Œçº¯è¿›åº¦æ¡çš„span
