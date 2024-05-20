@@ -14,7 +14,22 @@ class boblog {
 //Bo-Blog 2.x Database Control Class (c) Bob Shen
     var $con=NULL;
     var $isConnect=0;
-	function boblog() {
+    var $monthNames = array(
+        'Jan' => '一月',
+        'Feb' => '二月',
+        'Mar' => '三月',
+        'Apr' => '四月',
+        'May' => '五月',
+        'Jun' => '六月',
+        'Jul' => '七月',
+        'Aug' => '八月',
+        'Sep' => '九月',
+        'Oct' => '十月',
+        'Nov' => '十一月',
+        'Dec' => '十二月'
+    );
+
+    function boblog() {
 	}
 	//构造函数，初始化
     function __construct(){
@@ -509,7 +524,7 @@ class getblogs extends boblog {
 		$entrytime=gmdate('H:i', ($entry['pubtime']+3600*$config['timezone'])); 
 		list($entrydatey, $entrydatem, $entrydated)=explode('/', gmdate('Y/n/j', ($entry['pubtime']+3600*$config['timezone'])));
 		$entrydatemnamefull=gmdate('F', ($entry['pubtime']+3600*$config['timezone']));
-		$entrydatemnameshort=gmdate('M', ($entry['pubtime']+3600*$config['timezone']));
+        $entrydatemnameshort = $this->monthNames[gmdate('M', ($entry['pubtime'] + 3600 * $config['timezone']))];
 		$tmp=$entry['authorid'];
 		$entryauthor=$adminlist[$tmp];
 		$entryauthor="<a href=\"".getlink_user($tmp)."\" target=\"_blank\">{$entryauthor}</a>";
@@ -933,7 +948,7 @@ class getblogs extends boblog {
 		$entrytime=gmdate('H:i', ($entry['pagetime']+3600*$config['timezone'])); 
 		list($entrydatey, $entrydatem, $entrydated)=explode('/', gmdate('Y/n/j', ($entry['pagetime']+3600*$config['timezone'])));
 		$entrydatemnamefull=gmdate('F', ($entry['pagetime']+3600*$config['timezone']));
-		$entrydatemnameshort=gmdate('M', ($entry['pagetime']+3600*$config['timezone']));
+		$entrydatemnameshort=$this->monthNames[gmdate('M', ($entry['pagetime']+3600*$config['timezone']))];
 		$tmp=$entry['pageauthor'];
 		$entryauthor=$adminlist[$tmp];
 		$entryauthor="<a href=\"".getlink_user($tmp)."\" target=\"_blank\">{$entryauthor}</a>";
