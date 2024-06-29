@@ -13,18 +13,12 @@ if (!function_exists("mysqli_connect")) {
 	die ("Your server does not seem to support MySQL, so Bo-Blog 2.x can not run at your server.");
 }
 
-function db_connect($dbhost, $dbuser, $dbpw, $dbname='') {
-    $con = mysqli_connect($dbhost, $dbuser, $dbpw);
-	if(!$con) {
-		db_halt($con,'Can not connect to MySQL server');
-	}
-	if (!empty($dbname)) {
-		$a_result=mysqli_select_db($con,$dbname);
-		/*if ($a_result) {
-			if (mysql_get_server_info()>='4.1.0') mysql_query("SET NAMES 'utf8'");
-		}*/
-		return $con;
-	}
+function db_connect($dbhost, $dbport, $dbuser, $dbpw, $dbname='') {
+    $con = mysqli_connect($dbhost, $dbuser, $dbpw, $dbname, $dbport);
+    if(!$con) {
+        db_halt($con,'Can not connect to MySQL server');
+    }
+    return $con;
 }
 
 function db_select_db($con,$dbname) {

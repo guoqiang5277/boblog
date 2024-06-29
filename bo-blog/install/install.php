@@ -12,7 +12,7 @@ $ts=time();
 $ip=$_SERVER['REMOTE_ADDR'];
 
 if (!$v) {
-	template("<div class='log'>Select Language</div><form action='install.php?v=setlang' method='post'><div class='mes'><div align='center'><select style=\"width: 50%;\" name='slang'><option value='en'>English</option><option value='zh-cn' selected='selected'>Simplified Chinese (简体中文)</option><option value='zh-tw'>Traditional Chinese (正體中文)</option><option value='vn'>Vietnamese (Tiếng Việt)</option></select></div><br/><div align='center'><input type='submit' value='OK' class='inbut'></div></form></div>");
+	template("<div class='log'>Select Language</div><form action='install.php?v=setlang' method='post'><div class='mes'><div align='center'><select style=\"width: 50%;\" name='slang'><option value='en'>English</option><option value='zh-cn' selected='selected'>Simplified Chinese (简体中文)</option><option value='zh-tw'>Traditional Chinese (正體中文)</option></select></div><br/><div align='center'><input type='submit' value='OK' class='inbut'></div></form></div>");
 }
 
 if ($v=='setlang') {
@@ -56,11 +56,11 @@ if ($v=='1') {
 	if ($newinstall==1) { // not repair
 		$overwritesel="<b>{$lang[65]}</b><br><input type='radio' value='1' name='db_overwrite' onclick=\"alert('{$lang[68]}');\">{$lang[66]} <input type='radio' value='0' name='db_overwrite' checked>{$lang[67]}<br><br>";
 	}
-	template("<div class='log'>{$lang[8]}</div><div class='mes'><form action='install.php?v=2' method='post'><b>{$lang[9]}</b><br><input type='text' size='20' value='localhost' name='db_server'><br><br><b>{$lang[10]}</b><br><input type='text' size='20' value='' name='db_username'><br><br><b>{$lang[11]}</b><br><input type='password' size='20' value='' name='db_password'><br><br><b>{$lang[12]}</b><br><input type='text' size='20' value='' name='db_name'><br> {$lang[13]}<br><br><b>{$lang[14]}</b><br><input type='text' size='20' value='boblog_' name='db_prefix'><br> {$lang[15]}<br><br><b>{$lang[82]}</b><br>{$linkfrom['scheme']}://<input type='text' size='35' value='{$blogurlpath}' name='blogurlpath'>/index.php<br> {$lang[83]}<br><br>{$overwritesel}<b>{$lang[16]}</b> <a href='javascript:showlayer(\"what1\");'>[{$lang[17]}]</a><br><input type='radio' value='0' name='db_410'>{$lang[18]} <input type='radio' value='1' name='db_410'>{$lang[19]} <div id='what1' style='display: none;'><br>{$lang[20]}</div><div align='center'><br><input type='hidden' name='blogurlpathscheme' value='{$linkfrom['scheme']}'><input type='hidden' name='newinstall' value='{$newinstall}'><input type='submit' value='{$lang[21]}' class='inbut'> <input type='reset' value='{$lang[22]}'  class='inbut'></div></form></div>");
+	template("<div class='log'>{$lang[8]}</div><div class='mes'><form action='install.php?v=2' method='post'><b>{$lang[9]}</b><br><input type='text' size='20' value='localhost' name='db_server'><br><br><b>{$lang[86]}</b><br><input type='number' size='20' value='3306' name='db_port' ><br><br><b>{$lang[10]}</b><br><input type='text' size='20' value='' name='db_username'><br><br><b>{$lang[11]}</b><br><input type='password' size='20' value='' name='db_password'><br><br><b>{$lang[12]}</b><br><input type='text' size='20' value='' name='db_name'><br> {$lang[13]}<br><br><b>{$lang[14]}</b><br><input type='text' size='20' value='boblog_' name='db_prefix'><br> {$lang[15]}<br><br><b>{$lang[82]}</b><br>{$linkfrom['scheme']}://<input type='text' size='35' value='{$blogurlpath}' name='blogurlpath'>/index.php<br> {$lang[83]}<br><br>{$overwritesel}<b>{$lang[16]}</b> <a href='javascript:showlayer(\"what1\");'>[{$lang[17]}]</a><br><input type='radio' value='0' name='db_410'>{$lang[18]} <input type='radio' value='1' name='db_410'>{$lang[19]} <div id='what1' style='display: none;'><br>{$lang[20]}</div><div align='center'><br><input type='hidden' name='blogurlpathscheme' value='{$linkfrom['scheme']}'><input type='hidden' name='newinstall' value='{$newinstall}'><input type='submit' value='{$lang[21]}' class='inbut'> <input type='reset' value='{$lang[22]}'  class='inbut'></div></form></div>");
 }
 
 if ($v=='2') {
-	$con=db_connect($db_server, $db_username, $db_password, $db_name);
+	$con=db_connect($db_server, $db_port, $db_username, $db_password, $db_name);
 	if (!$con) {
 		template("<div class='log'>{$lang[1]}</div><div class='mes'>{$lang[23]}<br><br>{$errmsg}</div>");
 	}
@@ -73,13 +73,13 @@ if ($v=='2') {
 		$overwritesel="{$lang[26]}<br><input type='text' size='20' value='' name='username'><br><br>{$lang[27]}<br><input type='password' size='20' value='' name='password' id='password'><br><br>{$lang[80]}<br><input type='password' size='20' value='' name='confirmpassword' id='confirmpassword'><br><br>";
 	}
 	$blogurlpath=$blogurlpathscheme.'://'.$blogurlpath;
-	template("<div class='log'>{$lang[25]}</div><div class='mes'><form action='install.php?v=3' method='post' id='frm1'>{$overwritesel} {$lang[28]}<br><input type='text' size='40' name='blogname' value='Bo-Blog'><br><br>{$lang[29]}<br><input type='text' size='40' name='blogdesc' value='Bo-Blog'><input type='hidden' name='db_server' value='{$db_server}'><input type='hidden' name='db_username' value='{$db_username}'><input type='hidden' name='db_password' value='{$db_password}'><input type='hidden' name='db_name' value='{$db_name}'><input type='hidden' value='{$db_410}' name='db_410'><input type='hidden' name='db_prefix' value='{$db_prefix}'><input type='hidden' name='blogurlpath' value='{$blogurlpath}'><input type='hidden' name='db_overwrite' value='{$db_overwrite}'><br><br><div align='center'><input type='hidden' name='newinstall' value='{$newinstall}'><input type='button' id='btn1' value='{$lang[21]}' onclick='checkandsubmit();' class='inbut'> <input type='reset' value='{$lang[22]}'  class='inbut'></div></form></div>");
+	template("<div class='log'>{$lang[25]}</div><div class='mes'><form action='install.php?v=3' method='post' id='frm1'>{$overwritesel} {$lang[28]}<br><input type='text' size='40' name='blogname' value='Bo-Blog'><br><br>{$lang[29]}<br><input type='text' size='40' name='blogdesc' value='Bo-Blog'><input type='hidden' name='db_server' value='{$db_server}'><input type='hidden' name='db_port' value='{$db_port}'><input type='hidden' name='db_username' value='{$db_username}'><input type='hidden' name='db_password' value='{$db_password}'><input type='hidden' name='db_name' value='{$db_name}'><input type='hidden' value='{$db_410}' name='db_410'><input type='hidden' name='db_prefix' value='{$db_prefix}'><input type='hidden' name='blogurlpath' value='{$blogurlpath}'><input type='hidden' name='db_overwrite' value='{$db_overwrite}'><br><br><div align='center'><input type='hidden' name='newinstall' value='{$newinstall}'><input type='button' id='btn1' value='{$lang[21]}' onclick='checkandsubmit();' class='inbut'> <input type='reset' value='{$lang[22]}'  class='inbut'></div></form></div>");
 	db_close($con);
 }
 
 if ($v=='3') {
 	//Connect and Select Database
-    $con=db_connect($db_server, $db_username, $db_password, $db_name);
+    $con=db_connect($db_server, $db_port, $db_username, $db_password, $db_name);
 	if (!$con) {
 		template("<div class='log'>{$lang[1]}</div><div class='mes'>{$lang[23]}<br><br>{$errmsg}</div>");
 	}
@@ -96,7 +96,7 @@ if ($v=='3') {
 
 	if ($newinstall!=1) { // Repair tables now
 		db_query($con,"REPAIR TABLE IF EXISTS `{$db_prefix}blogs`, `{$db_prefix}calendar`, `{$db_prefix}categories`, `{$db_prefix}counter`, `{$db_prefix}forbidden`, `{$db_prefix}history`, `{$db_prefix}linkgroup`, `{$db_prefix}links`, `{$db_prefix}maxrec`, `{$db_prefix}messages`, `{$db_prefix}replies`, `{$db_prefix}user`, `{$db_prefix}mods`, `{$db_prefix}tags`, `{$db_prefix}plugins`");
-		template("<div class='log'>{$lang[76]}</div><div class='mes'><form action='install.php?v=4' method='post' id='frm1'>{$lang[77]}<br>{$lang[58]}<br><input type='hidden' value='{$db_server}' name='db_server'><input type='hidden' value='{$db_username}' name='db_username'><input type='hidden' value='{$db_password}' name='db_password'><input type='hidden' value='{$db_name}' name='db_name'><input type='hidden' value='{$db_prefix}' name='db_prefix'><input type='hidden' name='blogurlpath' value='{$blogurlpath}'><input type='hidden' value='{$db_410}' name='db_410'><input type='hidden' value='{$username}' name='username'><input type='hidden' value='{$password}' name='password'><input type='hidden' value='{$blogname}' name='blogname'><input type='hidden' value='".addslashes($blogdesc)."' name='blogdesc'><br><br><div align='center'><input type='hidden' name='newinstall' value='{$newinstall}'><input type='button' id='btn1' value='{$lang[21]}' onclick='submitit();' class='inbut'> <input type='reset' value='{$lang[22]}'  class='inbut'></div></form></div>");
+		template("<div class='log'>{$lang[76]}</div><div class='mes'><form action='install.php?v=4' method='post' id='frm1'>{$lang[77]}<br>{$lang[58]}<br><input type='hidden' value='{$db_server}' name='db_server'><input type='hidden' value='{$db_port}' name='db_port'><input type='hidden' value='{$db_username}' name='db_username'><input type='hidden' value='{$db_password}' name='db_password'><input type='hidden' value='{$db_name}' name='db_name'><input type='hidden' value='{$db_prefix}' name='db_prefix'><input type='hidden' name='blogurlpath' value='{$blogurlpath}'><input type='hidden' value='{$db_410}' name='db_410'><input type='hidden' value='{$username}' name='username'><input type='hidden' value='{$password}' name='password'><input type='hidden' value='{$blogname}' name='blogname'><input type='hidden' value='".addslashes($blogdesc)."' name='blogdesc'><br><br><div align='center'><input type='hidden' name='newinstall' value='{$newinstall}'><input type='button' id='btn1' value='{$lang[21]}' onclick='submitit();' class='inbut'> <input type='reset' value='{$lang[22]}'  class='inbut'></div></form></div>");
 	}
 
 	if ($db_overwrite==1) {
@@ -460,13 +460,14 @@ if ($v=='3') {
 	$result=db_query($con,$setup_query);
 	if (!$result) template("<div class='log'>{$lang[1]}</div><div class='mes'>{$errmsg}</div>");
 	
-	template("<div class='log'>{$lang[56]}</div><div class='mes'><form action='install.php?v=4' method='post' id='frm1'>{$lang[57]}<br>{$lang[58]}<br><input type='hidden' value='{$db_server}' name='db_server'><input type='hidden' value='{$db_username}' name='db_username'><input type='hidden' value='{$db_password}' name='db_password'><input type='hidden' value='{$db_name}' name='db_name'><input type='hidden' value='{$db_prefix}' name='db_prefix'><input type='hidden' name='blogurlpath' value='{$blogurlpath}'><input type='hidden' value='{$db_410}' name='db_410'><input type='hidden' value='{$username}' name='username'><input type='hidden' value='{$password}' name='password'><input type='hidden' value='{$blogname}' name='blogname'><input type='hidden' value='".addslashes($blogdesc)."' name='blogdesc'><br><br><div align='center'><input type='hidden' value='{$newinstall}' name='newinstall'><input type='button' id='btn1' value='{$lang[21]}' onclick='submitit();' class='inbut'> <input type='reset' value='{$lang[22]}'  class='inbut'></div></form></div>");
+	template("<div class='log'>{$lang[56]}</div><div class='mes'><form action='install.php?v=4' method='post' id='frm1'>{$lang[57]}<br>{$lang[58]}<br><input type='hidden' value='{$db_server}' name='db_server'><input type='hidden' value='{$db_port}' name='db_port'><input type='hidden' value='{$db_username}' name='db_username'><input type='hidden' value='{$db_password}' name='db_password'><input type='hidden' value='{$db_name}' name='db_name'><input type='hidden' value='{$db_prefix}' name='db_prefix'><input type='hidden' name='blogurlpath' value='{$blogurlpath}'><input type='hidden' value='{$db_410}' name='db_410'><input type='hidden' value='{$username}' name='username'><input type='hidden' value='{$password}' name='password'><input type='hidden' value='{$blogname}' name='blogname'><input type='hidden' value='".addslashes($blogdesc)."' name='blogdesc'><br><br><div align='center'><input type='hidden' value='{$newinstall}' name='newinstall'><input type='button' id='btn1' value='{$lang[21]}' onclick='submitit();' class='inbut'> <input type='reset' value='{$lang[22]}'  class='inbut'></div></form></div>");
 	db_close($con);
 }
 
 if ($v=='4') {
 	$config_data="<?PHP
 \$db_server='$db_server';
+\$db_port='$db_port';
 \$db_username='$db_username';
 \$db_password='$db_password';
 \$db_name='$db_name';

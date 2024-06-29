@@ -23,10 +23,10 @@ if (!function_exists("mysqli_connect")) {
 	die ("Your server does not seem to support MySQL, so Bo-Blog 2.x can not run at your server.");
 }
 
-function db_connect($dbhost, $dbuser, $dbpw, $dbname='') {
+function db_connect($dbhost, $db_port, $dbuser, $dbpw, $dbname='') {
 	global $db_410;
 
-    $con = mysqli_connect($dbhost, $dbuser, $dbpw);
+    $con = mysqli_connect($dbhost, $dbuser, $dbpw, $dbname, $db_port);
 		if(!$con) {
 			db_halt($con,'Can not connect to MySQL server');
 		}

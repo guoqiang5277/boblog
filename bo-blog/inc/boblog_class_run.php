@@ -57,8 +57,8 @@ class boblog {
         return $this->con;
 	}
 	function connectdb() {
-        global $db_server, $db_username, $db_password, $db_name;
-		$con = db_connect($db_server, $db_username, $db_password, $db_name);
+        global $db_server, $db_port, $db_username, $db_password, $db_name;
+		$con = db_connect($db_server, $db_port, $db_username, $db_password, $db_name);
         return $con;
 	}
 

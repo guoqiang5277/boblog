@@ -86,7 +86,7 @@ $lang[82]='blog所在位置';
 $lang[83]='填写blog首页所在的真实<b>绝对</b>路径';
 $lang[84]='归档汇总链接';
 $lang[85]='侧边栏一与侧边栏二的分割线';
-
+$lang[86]='MySQL端口号：';
 
 
 $langcopy=array (

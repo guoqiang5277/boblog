@@ -85,6 +85,7 @@ $lang[82]='Blog Path:';
 $lang[83]='Enter the absolute path of your blog.';
 $lang[84]='Link to archive list';
 $lang[85]='This separates Sidebar One and Sidebar Two.';
+$lang[86]='MySQL Port:';
 
 
 $langcopy=array (
