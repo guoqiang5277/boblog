@@ -90,8 +90,30 @@ if ($job=='add' || $job=='edit') { //Initialize public items
 	$arrayvalue_sticky=array(0, 1, 2);
 	$usergp_1=array_values($usergp);
 	$usergp_2=array_keys($usergp);
-	$arrayoption_editors=array('QuickTags', $lna[568], "FCKeditor {$lna[1017]}", "TinyMCE {$lna[1017]}", $lna[711]);
-	$arrayvalue_editors=array('quicktags', 'ubb', 'fckeditor', 'tinymce', 'custom');
+    // 生成编辑器选择列表,通过遍历editor目录下的文件夹来生成
+    $editors = @opendir("editor");
+    // 生成编辑器选择列表
+    $jeditorbody = '<select name="useeditor" id="useeditor" class="formselect">';
+    while ($editor = @readdir($editors)) {
+        if ($editor != "." && $editor != ".." && is_dir("editor/{$editor}")) {
+            if (file_exists("editor/{$editor}/config.php")) {
+                require_once "editor/{$editor}/config.php";
+                if (isset($jeditor)) {
+                    if ($editor == $useeditor) {
+                        $jeditorbody .= "<option value=\"{$editor}\" selected=\"selected\">{$jeditor["displayname"]}</option>";
+                    } else {
+                        $jeditorbody .= "<option value=\"{$editor}\">{$jeditor["displayname"]}</option>";
+                    }
+                }
+            }
+        }
+    }
+    $jeditorbody .= '</select>';
+    @closedir($editors);
+
+
+    //$arrayoption_editors=array('QuickTags', $lna[568], "FCKeditor {$lna[1017]}", "TinyMCE {$lna[1017]}", $lna[711]);
+	//$arrayvalue_editors=array('quicktags', 'ubb', 'fckeditor', 'tinymce', 'custom');
 
 	$ismoreon='none';
 	if ($flset['tags']!=1 && $permission['AddTag']==1) {
@@ -166,8 +188,8 @@ if ($job=='add' || $job=='edit') { //Initialize public items
 	else $disabled_sticky=1;
 	$puttingproperty=autoselect('property', $arrayoption_property, $arrayvalue_property, $records['property']);
 
-	$selectedid_editors=array_search($useeditor, $arrayvalue_editors);
-	$puttingeditors=autoselect('useeditor', $arrayoption_editors, $arrayvalue_editors, $selectedid_editors);
+	//$selectedid_editors=array_search($useeditor, $arrayvalue_editors);
+	//$puttingeditors=autoselect('useeditor', $arrayoption_editors, $arrayvalue_editors, $selectedid_editors);
 
 	$puttingcates=autoselect('category', $arrayoption_categories, $arrayvalue_categories, $selectedid_category);
 	$puttingcates=str_replace('</select>', "<option value='new'>[+]{$lna[180]}</option></select>", $puttingcates);
@@ -243,7 +265,7 @@ $tag_js
 
 <table width=100% cellpadding=4 cellspacing=1 align=center>
 <tr bgcolor="#ffffff" align=left class="hiddenitem" id="extraoption1">
-<td width=100 align=center>{$lna[567]}</td><td>{$puttingeditors} <input type=button value="{$lna[64]}" onclick="changeeditor();"></td>
+<td width=100 align=center>{$lna[567]}</td><td>{$jeditorbody} <input type=button value="{$lna[64]}" onclick="changeeditor();"></td>
 </tr>
 <tr bgcolor="#ffffff" align=left class="visibleitem">
 <td width=100 align=center>{$lna[284]}</td><td><input type='text' name='title' id='title' value="{$records['title']}" size='50'  class='formtext'></td>
