@@ -757,9 +757,18 @@ if ($job=='langset') {
 	$lnc=$lnc_tmp;
 	$langname=$langname_tmp;
 
-	foreach ($alllanglist as $eachlang) {
-		$selectbody.="<option value=\"{$eachlang['ldir']}\">{$eachlang['lname']}</option>\n";
-	}
+    foreach ($alllanglist as $eachlang) {
+        if ($eachlang['ldir'] == $langfront) {
+            $selectbodylangfront .= "<option value=\"{$eachlang['ldir']}\" selected>{$eachlang['lname']}</option>\n";
+        } else {
+            $selectbodylangfront .= "<option value=\"{$eachlang['ldir']}\">{$eachlang['lname']}</option>\n";
+        }
+        if ($eachlang['ldir'] == $langback) {
+            $selectbodylangback .= "<option value=\"{$eachlang['ldir']}\" selected>{$eachlang['lname']}</option>\n";
+        } else {
+            $selectbodylangback .= "<option value=\"{$eachlang['ldir']}\">{$eachlang['lname']}</option>\n";
+        }
+    }
 
 	$display_overall.= <<<eot
 <table class='tablewidth' align=center cellpadding=4 cellspacing=0>
@@ -785,12 +794,12 @@ Current Language Pack/当前语言包/當前語言包<br><br>
 Set Language Pack Location/更改语言包为/更改語言包為<br><br>
 <b>Front-End/前台/前臺</b>  
 <br><select name='newlangf'>
-$selectbody
+$selectbodylangfront
 </select>
 <br><br>
 <b>Back-End/后台/後臺</b>  
 <br><select name='newlangb'>
-$selectbody
+$selectbodylangback
 </select>
 <br>
 <br>
