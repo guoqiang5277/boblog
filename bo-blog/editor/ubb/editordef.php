@@ -135,7 +135,7 @@ if (is_firefox) {
 [<a href="javascript: showhidediv('FrameUpload');" title="{$lna[741]}" class="thickbox">{$lna[741]}</a>]
 
 <div id="FrameUpload" style="display: none;"><iframe width=90% frameborder=0 height=200 frameborder=0 src='admin.php?act=upload&useeditor={$useeditor}'></iframe></div>
-<textarea name='content' id='content' rows='30' cols='140' class='formtextarea'>{content}</textarea>
+<textarea name='content' id='content' rows='30' cols='120' class='formtextarea'>{content}</textarea>
 $editoreditmodeonly2
 
 <input type=hidden id='content_old' value=''>
