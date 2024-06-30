@@ -30,7 +30,7 @@ $shutajax=($config['closeadminajax']=='1') ? 1 : 0;
 
 $messageblock=($flset['guestbook']!=1) ? "<span class=\"ahb{$adminclassshow['message']}\"><li onmouseover=\"adminitemhover('message',this)\"><a href=\"admin.php?act=message\">{$lna[7]}</a></li></span>" : '';
 $display_overall.=<<<eot
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="UTF-8">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -59,7 +59,7 @@ $editorjs
 <div id='adminoverall'>
 <div id="bloginfo">
 <div id="bloginfoimg">
-<img src="admin/theme/{$themename}/logo.gif" alt="Bo-Blog" />
+<img src="admin/theme/{$themename}/logo.png" alt="Bo-Blog" />
 </div>
 <div id="bloginfotext">
 {$lna[1]} {$daytip}
