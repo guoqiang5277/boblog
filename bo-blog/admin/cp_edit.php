@@ -90,28 +90,6 @@ if ($job=='add' || $job=='edit') { //Initialize public items
 	$arrayvalue_sticky=array(0, 1, 2);
 	$usergp_1=array_values($usergp);
 	$usergp_2=array_keys($usergp);
-    // 生成编辑器选择列表,通过遍历editor目录下的文件夹来生成
-    $editors = @opendir("editor");
-    // 生成编辑器选择列表
-    $jeditorbody = '<select name="useeditor" id="useeditor" class="formselect">';
-    while ($editor = @readdir($editors)) {
-        if ($editor != "." && $editor != ".." && is_dir("editor/{$editor}")) {
-            if (file_exists("editor/{$editor}/config.php")) {
-                require_once "editor/{$editor}/config.php";
-                if (isset($jeditor)) {
-                    if ($editor == $useeditor) {
-                        $jeditorbody .= "<option value=\"{$editor}\" selected=\"selected\">{$jeditor["displayname"]}</option>";
-                    } else {
-                        $jeditorbody .= "<option value=\"{$editor}\">{$jeditor["displayname"]}</option>";
-                    }
-                }
-            }
-        }
-    }
-    $jeditorbody .= '</select>';
-    @closedir($editors);
-
-
     //$arrayoption_editors=array('QuickTags', $lna[568], "FCKeditor {$lna[1017]}", "TinyMCE {$lna[1017]}", $lna[711]);
 	//$arrayvalue_editors=array('quicktags', 'ubb', 'fckeditor', 'tinymce', 'custom');
 
@@ -215,7 +193,8 @@ if ($job=='add' || $job=='edit') { //Initialize public items
 	$records['content']=preg_replace("/\[php\](.+?)\[\/php\]/is", "phpcode4('\\1')", $records['content']);
 	$records['content']=stripslashes($records['content']);
 	if ($editorbody!='PHP_INCLUDE') $editorbody=str_replace("{content}", $records['content'], $editorbody);
-
+    require_once "admin/uimodule/editor.module.php";
+    $jeditorbody = editor_Html_getEditorList($useeditor);
 //Now Begins the main part
 	$display_overall.=highlightadminitems('write', 'entry');
 $display_overall.= <<<eot
