@@ -77,6 +77,7 @@ class boblog {
 	function getgroupbyquery($query) {
 		$result=db_query($this->getCon(),$query);
 		$i=0;
+        $fetchresult=array();
 		while ($row=db_fetch_array($result)) {
 			while (@list($key, $val)=@each($row)) {
 				$fetchresult[$i][$key]=$val;
@@ -344,7 +345,7 @@ class getblogs extends boblog {
 			if ($eachreply['replierid']==-1) {
 				$replier=$eachreply['replier'];
 				if ($flset['avatar']!=1 && $mbcon['visitorgravatar']=='1' && !empty($eachreply['repemail'])) { //Avatars for nonusers
-					$avataraddress=get_gravatar($eachreply['repemail']);		
+					$avataraddress=get_gravatar($eachreply['repemail']);
 				}
 			}
 			else {
@@ -362,7 +363,7 @@ class getblogs extends boblog {
 			if ($permission['SeeIP']==1) $replierip="<a href=\"{$mbcon['ipsearch']}{$eachreply['repip']}\" target=\"_blank\"><img src=\"{$mbcon['images']}/ip.gif\" border=\"0\" alt=\"IP\" title=\"IP: {$eachreply['repip']}\" /></a>";
 			if ($eachreply['repemail']) $replieremail="<a href=\"mailto:{$eachreply['repemail']}\"><img src=\"{$mbcon['images']}/email.gif\" border=\"0\" alt=\"Email\" title=\"{$lnc[18]}\" /></a>";
 			if ($eachreply['repurl']) $replierhomepage="<a href=\"{$eachreply['repurl']}\" target=\"_blank\"><img src=\"{$mbcon['images']}/homepage.gif\" border=\"0\" alt=\"Homepage\" title=\"{$lnc[19]}\" /></a>";
-			$replytime=zhgmdate("{$mbcon['timeformat']} H:i", ($eachreply['reptime']+3600*$config['timezone'])); 
+			$replytime=zhgmdate("{$mbcon['timeformat']} H:i", ($eachreply['reptime']+3600*$config['timezone']));
 			if ($permission['ReplyReply']==1) {
 				$addadminreply="<a href=\"javascript: showadminreply('com_{$eachreply['repid']}');\">[{$lnc[20]}]</a>";
 				$deladminreply="<a href=\"javascript: showdeladminreply('{$eachreply['repid']}');\">[{$lnc[21]}]</a>";
@@ -379,7 +380,7 @@ class getblogs extends boblog {
 			}
 			if ($userdetail['ip']==$eachreply['repip'] && ($nowtime['timestamp']-$eachreply['reptime']<$mbcon['editcomment']) && $eachreply['reppsw']=='' && empty($eachreply['adminreptime'])) { 			//Allow edit
 				$rawreplycontent=safe_invert($eachreply['repcontent']);
-				$expirereplytime=zhgmdate("{$mbcon['timeformat']} H:i", ($eachreply['reptime']+3600*$config['timezone']+$mbcon['editcomment'])); 
+				$expirereplytime=zhgmdate("{$mbcon['timeformat']} H:i", ($eachreply['reptime']+3600*$config['timezone']+$mbcon['editcomment']));
 				$replycontent.="<br/><div class=\"commentbox-label\">{$lnc[300]} {$expirereplytime} {$lnc[301]} "."[<a href=\"javascript: showhidediv('editcomment{$eachreply['repid']}');\">{$lnc[302]}</a>]</div>";
 				$replycontent.="<div id=\"editcomment{$eachreply['repid']}\" style='display: none;'><form action=\"javascript: ajax_editcomment({$eachreply['repid']}, 'reply', {$i});\" method=\"post\" id=\"formeditcomment{$eachreply['repid']}\"><textarea cols='55' rows='4'  id=\"editcomcontent{$eachreply['repid']}\" name='v_contentc'>{$rawreplycontent}</textarea><br/><input type='button' value='{$lnc[25]}' onclick=\"ajax_editcomment({$eachreply['repid']}, 'reply', {$i});\" class='button' /> <input type='reset' value='{$lnc[26]}' class='button' /></form></div>";
 			}
@@ -445,7 +446,7 @@ class getblogs extends boblog {
 		if ($eachreply['replierid']==-1) {
 			$replier=$eachreply['replier'];
 			if ($flset['avatar']!=1 && $mbcon['visitorgravatar']=='1' && !empty($eachreply['repemail'])) { //Avatars for nonusers
-				$avataraddress=get_gravatar($eachreply['repemail']);		
+				$avataraddress=get_gravatar($eachreply['repemail']);
 			}
 		}
 		else {
@@ -480,7 +481,7 @@ class getblogs extends boblog {
 		}
 		if ($userdetail['ip']==$eachreply['repip'] && ($nowtime['timestamp']-$eachreply['reptime']<$mbcon['editcomment']) && $eachreply['reppsw']=='' && empty($eachreply['adminreptime'])) { //Allow edit
 			$rawreplycontent=safe_invert($eachreply['repcontent']);
-			$expirereplytime=zhgmdate("{$mbcon['timeformat']} H:i", ($eachreply['reptime']+3600*$config['timezone']+$mbcon['editcomment'])); 
+			$expirereplytime=zhgmdate("{$mbcon['timeformat']} H:i", ($eachreply['reptime']+3600*$config['timezone']+$mbcon['editcomment']));
 			$replycontent.="<br/><div class=\"commentbox-label\">{$lnc[300]} {$expirereplytime} {$lnc[301]} "."[<a href=\"javascript: showhidediv('editcomment{$eachreply['repid']}');\">{$lnc[302]}</a>]</div>";
 			$replycontent.="<div id=\"editcomment{$eachreply['repid']}\" style='display: none;'><form action=\"javascript: ajax_editcomment({$eachreply['repid']}, 'message', {$i});\" method=\"post\" id=\"formeditcomment{$eachreply['repid']}\"><textarea cols='55' rows='4'  id=\"editcomcontent{$eachreply['repid']}\" name='v_contentc'>{$rawreplycontent}</textarea><br/><input type='button' value='{$lnc[25]}' onclick=\"ajax_editcomment({$eachreply['repid']}, 'message', {$i});\"  class='button' /> <input type='reset' value='{$lnc[26]}'  class='button' /></form></div>";
 		}
@@ -520,8 +521,8 @@ class getblogs extends boblog {
 		}
 		$entrytitle="<a href=\"".getlink_entry($entry['blogid'], $entry['blogalias'])."\">{$entry['title']}</a>";
 		if ($entry['sticky']==1 || $entry['sticky']==2) $entrytitle="[{$lnc[33]}] ".$entrytitle;
-		$entrydate=zhgmdate("{$mbcon['timeformat']}", ($entry['pubtime']+3600*$config['timezone'])); 
-		$entrytime=gmdate('H:i', ($entry['pubtime']+3600*$config['timezone'])); 
+		$entrydate=zhgmdate("{$mbcon['timeformat']}", ($entry['pubtime']+3600*$config['timezone']));
+		$entrytime=gmdate('H:i', ($entry['pubtime']+3600*$config['timezone']));
 		list($entrydatey, $entrydatem, $entrydated)=explode('/', gmdate('Y/n/j', ($entry['pubtime']+3600*$config['timezone'])));
 		$entrydatemnamefull=gmdate('F', ($entry['pubtime']+3600*$config['timezone']));
         $entrydatemnameshort = $this->monthNames[gmdate('M', ($entry['pubtime'] + 3600 * $config['timezone']))];
@@ -562,7 +563,7 @@ class getblogs extends boblog {
 			$tmp=$entry['weather'];
 			$entryicon="<img src=\"{$weather[$tmp]['image']}\" alt=\"{$weather[$tmp]['text']}\" title=\"{$weather[$tmp]['text']}\"/>";
 		} else $entryicon='';
-		
+
 		if ($flset['star']!=1) {
 			$entrystar="<span id=\"starid{$entry['blogid']}\">";
 			$entrystar.=($permission['AddEntry']==1) ? (($entry['starred']%2==1) ? "<a href=\"javascript: dostar('{$entry['blogid']}');\"><img src=\"{$template['moreimages']}/others/starred.gif\" alt=\"\" title=\"{$lnc[39]}\" border=\"0\"/></a>" : "<a href=\"javascript: dostar('{$entry['blogid']}');\"><img src=\"{$template['moreimages']}/others/unstarred.gif\" alt=\"\" title=\"{$lnc[40]}\" border=\"0\"/></a>") : (($entry['starred']%2==1) ? "<img src=\"{$template['moreimages']}/others/starred.gif\" alt=\"\" title=\"{$lnc[39]}\" border=\"0\"/>" : "<img src=\"{$template['moreimages']}/others/unstarred.gif\" alt=\"\" title=\"{$lnc[40]}\" border=\"0\"/>");
@@ -765,7 +766,7 @@ class getblogs extends boblog {
 		}
 		$entrytitle='['.$lnc[38].'] '.$entry['title'];
 		$entrytitle=preg_replace("/&(.+?);/is", "", $entrytitle);
-		$entrytime=gmdate('r', $entry['reptime']); 
+		$entrytime=gmdate('r', $entry['reptime']);
 		$entrytime=str_replace('  ', ' ', $entrytime);  //PHP outputs two spaces between weekday and time
 		$entryauthor=$entry['replier'];
 		$entryemail=(strstr($entry['repemail'], '@')) ? $entry['repemail'] : "user@domain.com";
@@ -794,7 +795,7 @@ class getblogs extends boblog {
 		}
 		return $t->set('listbody', array('listbody'=>$listbody));
 	}
-	
+
 	function make_visit_form($formtitle, $id, $actionurl) {
 		global $mbcon, $logstat, $openidloginstat, $permission, $userdetail, $config, $emots, $t, $lnc;
 		if (!@is_a($t, 'template')) {
@@ -944,8 +945,8 @@ class getblogs extends boblog {
 			$t=new template;
 		}
 		$entrytitle=$entry['pagetitle'];
-		$entrydate=zhgmdate("{$mbcon['timeformat']}", ($entry['pagetime']+3600*$config['timezone'])); 
-		$entrytime=gmdate('H:i', ($entry['pagetime']+3600*$config['timezone'])); 
+		$entrydate=zhgmdate("{$mbcon['timeformat']}", ($entry['pagetime']+3600*$config['timezone']));
+		$entrytime=gmdate('H:i', ($entry['pagetime']+3600*$config['timezone']));
 		list($entrydatey, $entrydatem, $entrydated)=explode('/', gmdate('Y/n/j', ($entry['pagetime']+3600*$config['timezone'])));
 		$entrydatemnamefull=gmdate('F', ($entry['pagetime']+3600*$config['timezone']));
 		$entrydatemnameshort=$this->monthNames[gmdate('M', ($entry['pagetime']+3600*$config['timezone']))];
@@ -964,7 +965,7 @@ class getblogs extends boblog {
 
 
 	function keep_htmlcode_matches($str) {
-		/* HTML code tidy 
+		/* HTML code tidy
 			by Bob Shen 2007-2-21
 		*/
 		global $mbcon;
