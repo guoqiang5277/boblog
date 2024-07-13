@@ -84,7 +84,7 @@ function db_error($con) {
 }
 
 function db_errno($con) {
-	return mysqli_errno();
+	return mysqli_errno($con);
 }
 
 //function result($query, $row) {
@@ -120,33 +120,34 @@ function db_close($con) {
 	mysqli_close($con);
 }
 
-function db_halt($con,$message = '', $sql = '') {
-global $db_prefix;
-$timestamp = time();
-$errmsg = '';
+function db_halt($con, $message = '', $sql = '')
+{
+    global $db_prefix;
+    $timestamp = time();
+    $errmsg = '';
 
-$dberror = db_error($con);
-$dberrno = db_errno($con);
-$dberror=str_replace($db_prefix, '***', $dberror);
-$sql=str_replace($db_prefix, '***', $sql);
+    $dberror = db_error($con);
+    $dberrno = db_errno($con);
+    $dberror = str_replace($db_prefix, '***', $dberror);
+    //$sql = str_replace($db_prefix, '***', $sql);
 
 
-$errmsg = "<b>Bo-Blog Database System Tips</b>: $message\n\n";
-$errmsg .= "<b>Time</b>: ".gmdate("Y-n-j g:ia", $timestamp + ($GLOBALS["timeoffset"] * 3600))."\n";
-$errmsg .= "<b>Script</b>: ".$GLOBALS['PHP_SELF']."\n\n";
-if($sql) {
-	$errmsg .= "<b>SQL</b>: ".htmlspecialchars($sql)."\n";
-}
-$errmsg .= "<b>Error</b>:  $dberror\n";
-$errmsg .= "<b>Errno.</b>:  $dberrno";
+    $errmsg = "<b>Bo-Blog Database System Tips</b>: $message\n\n";
+    $errmsg .= "<b>Time</b>: " . gmdate("Y-n-j g:ia", $timestamp + ($GLOBALS["timeoffset"] * 3600)) . "\n";
+    $errmsg .= "<b>Script</b>: " . $GLOBALS['PHP_SELF'] . "\n\n";
+    if ($sql) {
+        $errmsg .= "<b>SQL</b>: " . htmlspecialchars($sql) . "\n";
+    }
+    $errmsg .= "<b>Error</b>:  $dberror\n";
+    $errmsg .= "<b>Errno.</b>:  $dberrno";
 
-@header("Content-Type: text/html; charset=utf-8");
-echo "</table></table></table></table></table>\n";
-echo "<p style=\"font-family: Verdana, Tahoma; font-size: 11px; background: #FFFFFF;\">";
-echo nl2br($errmsg);
-	
-echo '</p>';
-exit;
+    @header("Content-Type: text/html; charset=utf-8");
+    echo "</table></table></table></table></table>\n";
+    echo "<p style=\"font-family: Verdana, Tahoma; font-size: 11px; background: #FFFFFF;\">";
+    echo nl2br($errmsg);
+
+    echo '</p>';
+    exit;
 }
 
 
