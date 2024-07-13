@@ -18,6 +18,7 @@ function db_connect($dbhost, $dbport, $dbuser, $dbpw, $dbname='') {
     if(!$con) {
         db_halt($con,'Can not connect to MySQL server');
     }
+    $con->set_charset("utf8mb4");
     return $con;
 }
 

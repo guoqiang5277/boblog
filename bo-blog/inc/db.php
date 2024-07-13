@@ -34,7 +34,7 @@ function db_connect($dbhost, $db_port, $dbuser, $dbpw, $dbname='') {
 	if (!empty($dbname)) {
 		$a_result=mysqli_select_db($con,$dbname);
 		if ($a_result) {
-			if ($db_410=='1')  mysqli_query($con,"SET NAMES 'utf8'");
+			/*if ($db_410=='1')*/  mysqli_query($con,"SET NAMES 'utf8mb4'");
 		}
 		return $con;
 	}
@@ -129,7 +129,7 @@ function db_halt($con, $message = '', $sql = '')
     $dberror = db_error($con);
     $dberrno = db_errno($con);
     $dberror = str_replace($db_prefix, '***', $dberror);
-    //$sql = str_replace($db_prefix, '***', $sql);
+    $sql = str_replace($db_prefix, '***', $sql);
 
 
     $errmsg = "<b>Bo-Blog Database System Tips</b>: $message\n\n";
