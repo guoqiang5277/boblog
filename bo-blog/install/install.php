@@ -5,8 +5,8 @@ ini_set("magic_quotes_runtime", 0);
 include ('db.php');
 $mqgpc_status=get_magic_quotes_gpc();
 if ($mqgpc_status==0) $_POST=addsd($_POST);
-@extract($_POST, EXTR_SKIP); 
-@extract($_GET, EXTR_SKIP); 
+@extract($_POST, EXTR_SKIP);
+@extract($_GET, EXTR_SKIP);
 if (isset($password)) $password=md5($password);
 $ts=time();
 $ip=$_SERVER['REMOTE_ADDR'];
@@ -90,8 +90,8 @@ if ($v=='3') {
 
 	//If the server is running MySQL with a version higher than 4.1, set the character as UTF-8
 	if ($db_410==1) {
-		db_query($con,"SET NAMES 'utf8'");
-		$sqlcharset=" CHARSET=utf8";
+		db_query($con,"SET NAMES 'utf8mb4'");
+		$sqlcharset=" CHARSET=utf8mb4";
 	}
 
 	if ($newinstall!=1) { // Repair tables now
@@ -441,9 +441,9 @@ if ($v=='3') {
 	) ENGINE = MyISAM{$sqlcharset}";
 	$result=db_query($con,$setup_query);
 	if (!$result) template("<div class='log'>{$lang[1]}</div><div class='mes'>{$errmsg}</div>");
-	$setup_query="INSERT INTO `{$db_prefix}plugins` VALUES (1, 'viewstat', 'Bob', '{$lang[69]}', '1.0', 'http://www.bo-blog.com', '2.0.1', 1, 1, '')"; 
+	$setup_query="INSERT INTO `{$db_prefix}plugins` VALUES (1, 'viewstat', 'Bob', '{$lang[69]}', '1.0', 'http://www.bo-blog.com', '2.0.1', 1, 1, '')";
 	$result=db_query($con,$setup_query);
-	$setup_query="INSERT INTO `{$db_prefix}plugins` VALUES (2, 'ccunion', 'Bob', 'CC Video Union plugin for Bo-Blog.', '1.1', 'http://www.bo-blog.com', '2.0.2', 0, 1, 'ubbeditor,ubbanalyseadvance,page')"; 
+	$setup_query="INSERT INTO `{$db_prefix}plugins` VALUES (2, 'ccunion', 'Bob', 'CC Video Union plugin for Bo-Blog.', '1.1', 'http://www.bo-blog.com', '2.0.2', 0, 1, 'ubbeditor,ubbanalyseadvance,page')";
 	$result=db_query($con,$setup_query);
 	if (!$result) template("<div class='log'>{$lang[1]}</div><div class='mes'>{$errmsg}</div>");
 
@@ -459,7 +459,7 @@ if ($v=='3') {
 	) ENGINE=MyISAM";
 	$result=db_query($con,$setup_query);
 	if (!$result) template("<div class='log'>{$lang[1]}</div><div class='mes'>{$errmsg}</div>");
-	
+
 	template("<div class='log'>{$lang[56]}</div><div class='mes'><form action='install.php?v=4' method='post' id='frm1'>{$lang[57]}<br>{$lang[58]}<br><input type='hidden' value='{$db_server}' name='db_server'><input type='hidden' value='{$db_port}' name='db_port'><input type='hidden' value='{$db_username}' name='db_username'><input type='hidden' value='{$db_password}' name='db_password'><input type='hidden' value='{$db_name}' name='db_name'><input type='hidden' value='{$db_prefix}' name='db_prefix'><input type='hidden' name='blogurlpath' value='{$blogurlpath}'><input type='hidden' value='{$db_410}' name='db_410'><input type='hidden' value='{$username}' name='username'><input type='hidden' value='{$password}' name='password'><input type='hidden' value='{$blogname}' name='blogname'><input type='hidden' value='".addslashes($blogdesc)."' name='blogdesc'><br><br><div align='center'><input type='hidden' value='{$newinstall}' name='newinstall'><input type='button' id='btn1' value='{$lang[21]}' onclick='submitit();' class='inbut'> <input type='reset' value='{$lang[22]}'  class='inbut'></div></form></div>");
 	db_close($con);
 }
@@ -500,11 +500,11 @@ if ($v=='4') {
 ";
 	writetofile('../data/config.php', $config_data);
 
-	if ($newinstall!=1) 	{ //Quit	
+	if ($newinstall!=1) 	{ //Quit
 		if (file_exists("copy/mod_config.php")) { //Repair mod_config.php
 			$orgin=readfromfile("copy/mod_config.php");
 			writetofile("../data/mod_config.php", $orgin);
-		}	
+		}
 		@rename ("install.php", "install.bak"); //Try to rename install.php
 		template("<div class='log'>{$lang[61]}</div><div class='mes'><form action='' method='post' id='frm1'>{$lang[78]}<br>{$lang[79]}<br><br><div align=center><input type='button' value='{$lang[64]}' onclick='window.location=\"../index.php\";' class='inbut'></div>");
 	}
@@ -515,7 +515,7 @@ if ($v=='4') {
 	writetofile('../data/modules.php', "<?PHP\n/*--PREPENDAREA--*/\n/*--APPENDAREA--*/\n\$blogitem['announcement']=array('type'=>'block',	'name'=>'announcement', 'title'=>'{$lang[59]}', 'content'=>'{$lang[60]}', 'extend'=>1);\n\$blogitem['archivelink']=array('type'=>'link', 'url'=>'archive.php', 'text'=>'{$lang[49]}');\n");
 
 	writetofile('../data/cache_categories.php', "<?PHP exit;?><|>0<|>{$lang[32]}<|>{$lang[33]}<|>0<|>0<|>0<|><|><|>1<|>-1<|>\n");
-	
+
 	writetofile('../data/online.php', "");
 
 	writetofile('../data/cache_tags.php', "");
