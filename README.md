@@ -24,6 +24,23 @@
 * 禁止使用Tab字符, 
 * 禁止使用GBK等非UTF-8编码
 * 禁止使用Windows风格的换行符(CRLF), 只允许Unix风格的换行符(LF)
+***
+# [修改文档]
+* 数据库编码格式修改为utf8mb4
+```sql
+-- 切换到你的数据库
+USE your_database_name;
+
+-- 将数据库字符集设置为 utf8mb4
+ALTER DATABASE your_database_name CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci;
+
+-- 将表字符集设置为 utf8mb4
+ALTER TABLE boblog_blogs CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+-- 确保特定列的字符集也是 utf8mb4：
+-- 将 content 列的字符集设置为 utf8mb4
+ALTER TABLE boblog_blogs MODIFY content TEXT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+```
 
 ***
 # [插件制作文档]
