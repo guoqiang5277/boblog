@@ -54,7 +54,10 @@ if ($mbcon['antileech']=='0' || $mbcon['antileech']=='1') {
 else {
 	$sfilename=basename($attachfind['originalname']);
 	$browser=browserdetection();
-	if (in_array($browser, array('Firefox', 'Mozilla', 'Opera'))) $sfilename=urldecode($sfilename);
+	if (in_array($browser, array('Firefox', 'Mozilla', 'Opera'))) {
+        $sfilename=urldecode($sfilename);
+    }
+
 	$sfileext=strtolower(strrchr($sfilename,'.'));
 	$sfileext=str_replace(".", '', $sfileext);
 
@@ -85,42 +88,36 @@ function generate_leech_error(){
 	exit();
 }
 
-function browserdetection() {
-	if ( strpos($_SERVER['HTTP_USER_AGENT'], 'Gecko')!==false )
-	{
-	   if ( strpos($_SERVER['HTTP_USER_AGENT'], 'Netscape') )
-	   {
-		 $browser = 'Netscape';
-	   }
-	   else if ( strpos($_SERVER['HTTP_USER_AGENT'], 'Firefox')!==false )
-	   {
-		 $browser = 'Firefox';
-	   }
-	   else
-	   {
-		 $browser = 'Mozilla';
-	   }
-	}
-	else if ( strpos($_SERVER['HTTP_USER_AGENT'], 'MSIE')!==false )
-	{
-	   if ( strpos($_SERVER['HTTP_USER_AGENT'], 'Opera')!==false )
-	   {
-		 $browser = 'Opera'; //Opera 8.0
-	   }
-	   else
-	   {
-		 $browser = 'IE';
-	   }
-	}
-	else if (strpos($_SERVER['HTTP_USER_AGENT'], 'Opera')!==false)
-	{
-	   $browser = 'Opera';  //Opera 9.0
-	}
-	else
-	{
-	   $browser = 'Other';
-	}
+function browserdetection()
+{
+    if (strpos($_SERVER['HTTP_USER_AGENT'], 'Gecko') !== false) {
+        if (strpos($_SERVER['HTTP_USER_AGENT'], 'Netscape')) {
+            $browser = 'Netscape';
+        } else if (strpos($_SERVER['HTTP_USER_AGENT'], 'Firefox') !== false) {
+            $browser = 'Firefox';
+        } else {
+            $browser = 'Mozilla';
+        }
+    } else if (strpos($_SERVER['HTTP_USER_AGENT'], 'MSIE') !== false || strpos($_SERVER['HTTP_USER_AGENT'], 'Trident') !== false) {
+        // 如果用户代理字符串中包含 'MSIE' 或者 'Trident'
+        $browser = 'IE';
+    } else if (strpos($_SERVER['HTTP_USER_AGENT'], 'Edge') !== false) {
+        // 如果用户代理字符串中包含 'Edge'
+        $browser = 'Edge';
+    } else if (strpos($_SERVER['HTTP_USER_AGENT'], 'Chrome') !== false) {
+        // 如果用户代理字符串中包含 'Chrome'
+        $browser = 'Chrome';
+    } else if (strpos($_SERVER['HTTP_USER_AGENT'], 'Safari') !== false) {
+        // 如果用户代理字符串中包含 'Safari'
+        $browser = 'Safari';
+    } else if (strpos($_SERVER['HTTP_USER_AGENT'], 'Opera') !== false) {
+        // 如果用户代理字符串中包含 'Opera'
+        $browser = 'Opera';
+    } else {
+        // 如果以上都不匹配，则认为是其他浏览器
+        $browser = 'Other';
+    }
 
-	return $browser;
+    return $browser;
 }
 
