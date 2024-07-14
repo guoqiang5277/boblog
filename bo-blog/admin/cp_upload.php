@@ -218,6 +218,7 @@ $display_overall.=<<<eot
 <link rel="stylesheet" rev="stylesheet" href="{$csslocation}" type="text/css" media="all" />
 <script type='text/javascript' src="lang/{$langback}/jslang.js"></script>
 <script type='text/javascript' src="editor/{$useeditor}/uploader.js"></script>
+<script type="text/javascript" src="editor/common/js/uploader.js"></script>
 </head>
 <body style="margin: 0px; padding: 0px; overflow-y: auto; overflow-x: hidden; height: 200px;">
 <div id="adminrow" style="width: 100%">
