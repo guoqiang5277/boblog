@@ -36,7 +36,7 @@ var TinyMCE_UploaderPlugin = {
 
 				template['file'] = '../../../../admin.php?act=upload&useeditor=tinymce'; // Relative to theme
 				template['width'] = 580;
-				template['height'] = 200;
+				template['height'] = 300;
 
 				tinyMCE.openWindow(template, {editor_id : editor_id, inline : "yes"});
 

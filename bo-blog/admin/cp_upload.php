@@ -203,7 +203,7 @@ if ($job=="gallery") {
 
 	$pagebar=gen_page ($page, 3, "admin.php?go=upload_gallery&useeditor={$useeditor}&uploadyear={$uploadyear}&uploadmonth={$uploadmonth}", $numenries, 51);
 
-	$message="<form action='admin.php?go=upload_gallery&useeditor={$useeditor}' method=post><div align=left style=\"margin-left: 15px;\">{$showysel} / {$showmsel} <input type=submit value='{$lna[244]}'> &nbsp; &nbsp; {$pagebar} &nbsp; &nbsp; <input type='checkbox' id='ifautoaddubb' checked='checked'>{$lna[426]}</div></form><div><div id='uploadrow'  style=\"width: 210px; float: left; overflow-y: auto; height: 165px;\"><ul>".@implode("\n", $inserttext)."</ul></div><div id='picp' style='margin-top: 0px;  width: 400px !important; width: 320px; height: 165px;'>{$lna[427]}</div></div>";
+	$message="<form action='admin.php?go=upload_gallery&useeditor={$useeditor}' method=post><div align=left style=\"margin-left: 15px;\">{$showysel} / {$showmsel} <input type=submit value='{$lna[244]}'> &nbsp; &nbsp; {$pagebar} &nbsp; &nbsp; <input type='checkbox' id='ifautoaddubb' checked='checked'>{$lna[426]}</div></form><div style='display: flex; flex-wrap: nowrap;'><div id='uploadrow'  style=\"flex:1; width: 210px !important; overflow-y: auto; height: 165px;\"><ul>".@implode("\n", $inserttext)."</ul></div><div id='picp' style='flex: 1; width: 320px !important; margin-top: 0px; height: 165px;'>{$lna[427]}</div></div>";
 	print_upload ($message, "normal", "normal", "highlight");
 }
 
