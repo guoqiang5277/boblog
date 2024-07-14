@@ -32,4 +32,4 @@ $permission['FulltextSearch']='1';
 $permission['SearchInterval']='-1';
 $permission['Upload']='1';
 $permission['MaxSize']='2048';
-$permission['AllowedTypes']='zip rar gz bz2 jpg jpeg gif bmp png swf mp3 wma rm htm html txt doc xml css';
+$permission['AllowedTypes']='zip rar gz bz2 jpg jpeg gif bmp png mp3 wma rm avi mp4 mov htm html txt doc xml css';

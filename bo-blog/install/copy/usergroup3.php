@@ -29,5 +29,5 @@ $permission['FulltextSearch']='1';
 $permission['SearchInterval']='5';
 $permission['Upload']='1';
 $permission['MaxSize']='500';
-$permission['AllowedTypes']='zip rar gz bz2 jpg jpeg gif bmp png swf txt';
+$permission['AllowedTypes']='zip rar gz bz2 jpg jpeg gif bmp png txt';
 $permission['SeeAllProtectedEntry']='0';
