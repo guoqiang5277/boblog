@@ -57,11 +57,11 @@ if (defined('isIndex')) {
 		$langfront=$customlang;
 	}
 	else {
-		require_once ("data/language.php"); 
+		require_once ("data/language.php");
 	}
 	if (is_file("data/langspec.php")) require_once ("data/langspec.php"); //Load customized language data
 } else {
-	require_once ("data/language.php"); 
+	require_once ("data/language.php");
 }
 
 
@@ -132,7 +132,7 @@ else {
 	}
 	else $logstat=1;
 }
-if ($mbcon['enableopenid']=='1') { 
+if ($mbcon['enableopenid']=='1') {
 	$openidloginstat=($logstat==0 && $_COOKIE['openid_url_id']) ? 1 : 0;
 } else $openidloginstat=0;
 
@@ -162,10 +162,10 @@ $statistics=$blog->getsinglevalue("{$db_prefix}counter");
 
 //Who's online
 if (!defined('noCounter')) { //trackback, rss, sitemap are not regarded as normal visits
-	$afilename="data/online.php"; 
+	$afilename="data/online.php";
 	$onlineusers=$nowonline=array(); //2006-11-22 Security fix, 2006-11-25 modified
 	$online_all=@file($afilename);
-	for($i=0;$i<count($online_all);$i++){ 
+	for($i=0;$i<count($online_all);$i++){
 		$oldip=explode("|",$online_all[$i]);
 		if (trim($oldip[2])=='') continue;
 		if (gmdate("Ymd", $oldip[2]+$config['timezone']*3600+86400)==$nowtime['Ymd']) {
@@ -173,7 +173,7 @@ if (!defined('noCounter')) { //trackback, rss, sitemap are not regarded as norma
 			$statistics['today']=0;
 			break; //This will clear all visitors since yesterday, but will save visitors from today
 		}
-		$onlinetime=$nowtime['timestamp']-$oldip[2]; 
+		$onlinetime=$nowtime['timestamp']-$oldip[2];
 		if ($oldip[1]!=$userdetail['ip'] && $onlinetime<=$config['onlinetime']) {
 			$nowonline[]=$online_all[$i];
 			$onlineusers[]=array('userid'=>$oldip[3], 'username'=>$oldip[4], 'activetime'=>$oldip[2], 'ip'=>$oldip[1]);
@@ -445,6 +445,9 @@ function makeaquery ($array, $each, $connection='OR') { //To build a query conta
 		$build_element[]=str_replace('%s', $item, $each);
 	}
 	$output=@implode(" {$connection} ", $build_element);
+    if($connection == 'OR') {
+        $output = "({$output})";
+    }
 	return $output;
 }
 
@@ -491,7 +494,7 @@ function monthly ($month,$year) {
 	$first_day=date("w", $firstdate);
 	$lastdate=date("t", $firstdate);
 	$last_day=date("w", mktime (0,0,0,$month,$lastdate,$year));
-	$end_blank=6-$last_day; 
+	$end_blank=6-$last_day;
 	$padstart=$first_day+$lastdate;
 	$padend=$padstart+$end_blank;
 	$all_date=range(1, $lastdate);
@@ -554,7 +557,7 @@ function lunarcalendar ($month, $year) {
 	$total+=gmdate("z",gmmktime(0,0,0,$month,1,$year));
 	//用农历的天数累加来判断是否超过阳历的天数
 	$flag1=0; //判断跳出循环的条件
-	$lcj=0; 
+	$lcj=0;
 	while ($lcj<=120){
 		$lci=1;
 		while ($lci<=13){
@@ -814,7 +817,7 @@ function create_watermark($uploadfile) { //Watermark
 		case 'image/gif':
 			if (!function_exists('imagecreatefromgif')) {
 				$watermark_err=$lang_wm[5];
-				return false;				
+				return false;
 			} else $tmp=@imagecreatefromgif($uploadfile);
 			break;
 		case 'image/png':
@@ -822,7 +825,7 @@ function create_watermark($uploadfile) { //Watermark
 			break;
 		default:
 			$watermark_err=$lang_wm[6];
-			return false;				
+			return false;
 	}
 	$marksize=@getimagesize($waterimg);
 	$width=$marksize[0];
@@ -835,7 +838,7 @@ function create_watermark($uploadfile) { //Watermark
 			$pos_y=$upload_info[1]-$height-$pos_padding;
 			break;
 		// left-top
-		case '1': 
+		case '1':
 			$pos_x=$pos_padding;
 			$pos_y=$pos_padding;
 			break;
@@ -941,7 +944,7 @@ function in_iarray ($search, &$array) {
    if (strtolower($item) == $search)
      return true;
   return false;
-} 
+}
 
 function generate_emots_panel ($emots) {
 	if (!strstr($emots, '<!-- EmotPage -->')) return $emots;
