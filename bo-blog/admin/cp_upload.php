@@ -132,16 +132,20 @@ if ($job=="filedir") {
 	}
 
 
-	$foryears=range(2001,2050);
+    //var_dump($uploadyear);
+	$foryears=range($nowtime['year'],2004);
 	$formonths=range(1,12);
-	$showysel="<select name=uploadyear><option value=0 selected>{$lna[291]}</option><option value={$nowtime['year']}>{$nowtime['year']}</option>";
+	$showysel="<select name=uploadyear><option value=0 selected>{$lna[291]}</option>";
+        //<option value={$nowtime['year']}>{$nowtime['year']}</option>";
 	$showmsel="<select name=uploadmonth><option value=0>{$lna[292]}</option>";
 
 	foreach ($foryears as $y) {
-		$showysel.="<option value=$y>$y</option>\n";
+        $checked = ($y == $uploadyear) ? 'selected' : '';
+		$showysel.="<option value=$y {$checked}>$y</option>\n";
 	}
 	foreach ($formonths as $m) {
-		$showmsel.="<option value=$m>$m</option>\n";
+        $checked = ($m == $uploadmonth) ? 'selected' : '';
+		$showmsel.="<option value=$m {$checked}>$m</option>\n";
 	}
 	$showysel.="</select>\n";
 	$showmsel.="</select>\n";
@@ -180,16 +184,19 @@ if ($job=="gallery") {
 		$inserttext[]="<li><a href=\"javascript: generateUpload('[attach]{$detail_array[$i]['fid']}[/attach]', '{$file2}');\"  onmouseover=\"picPreview('{$detail_array[$i]['filepath']}', '[attach]{$detail_array[$i]['fid']}[/attach]');\">".urldecode($file)."</a></li>\n";
 	}
 
-	$foryears=range(2001,2050);
+	$foryears=range($nowtime['year'],2004);
 	$formonths=range(1,12);
-	$showysel="<select name=uploadyear><option value=0 selected>{$lna[291]}</option><option value={$nowtime['year']}>{$nowtime['year']}</option>";
+	$showysel="<select name=uploadyear><option value=0 selected>{$lna[291]}</option>";
+    //<option value={$nowtime['year']}>{$nowtime['year']}</option>";
 	$showmsel="<select name=uploadmonth><option value=0>{$lna[292]}</option>";
 
 	foreach ($foryears as $y) {
-		$showysel.="<option value=$y>$y</option>\n";
+        $checked = ($y == $uploadyear) ? 'selected' : '';
+		$showysel.="<option value=$y {$checked}>$y</option>\n";
 	}
 	foreach ($formonths as $m) {
-		$showmsel.="<option value=$m>$m</option>\n";
+        $checked = ($m == $uploadmonth) ? 'selected' : '';
+		$showmsel.="<option value=$m {$checked}>$m</option>\n";
 	}
 	$showysel.="</select>\n";
 	$showmsel.="</select>\n";
