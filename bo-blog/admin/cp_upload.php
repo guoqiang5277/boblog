@@ -74,7 +74,7 @@ if ($job=="doattach") {
 		if ($upload_file_size>$permission['MaxSize']*1024) print_upload ("{$lna[421]} ( {$permission['MaxSize']} KB)");
 
 		$upload_filename=strtolower($upload_filename);
-		
+
 		if (!move_uploaded_file ($upload_file,"{$targetfolder}/{$upload_filename}")) print_upload ($lna[130]."{$targetfolder}/");
 
 		@chmod("{$targetfolder}/{$upload_filename}", 0755);
@@ -119,7 +119,7 @@ if ($job=="filedir") {
 		$finishtimestamp=mktime(23, 59, 59, $uploadmonth+1, 0, $uploadyear);
 		$queryplus="WHERE `uploadtime`>={$starttimestamp} AND `uploadtime`<={$finishtimestamp} ";
 	}
-	
+
 	$detail_array=$blog->getgroupbyquery("SELECT * FROM `{$db_prefix}upload` {$queryplus} ORDER BY `uploadtime` DESC LIMIT {$start_id}, 51");
 	$numenries=$blog->countbyquery("SELECT COUNT(*) FROM `{$db_prefix}upload` {$queryplus}");
 
@@ -168,7 +168,7 @@ if ($job=="gallery") {
 		$finishtimestamp=mktime(23, 59, 59, $uploadmonth+1, 0, $uploadyear);
 		$queryplus="AND `uploadtime`>={$starttimestamp} AND `uploadtime`<={$finishtimestamp} ";
 	}
-	
+
 	$detail_array=$blog->getgroupbyquery("SELECT * FROM `{$db_prefix}upload` WHERE {$constr} {$queryplus} ORDER BY `uploadtime` DESC LIMIT {$start_id}, 51");
 	$numenries=$blog->countbyquery("SELECT COUNT(*) FROM `{$db_prefix}upload` WHERE {$constr} {$queryplus}");
 
@@ -216,7 +216,7 @@ $display_overall.=<<<eot
 <div id="adminrow" style="width: 100%">
 <table width="100%" cellpadding="0" cellspacing="0">
 <tr>
-
+<td>
 <table width="100%" cellpadding="0" cellspacing="0" style="border-left: 1px solid #000; border-right: 1px solid #000;">
 <tr>
 <td class="$classup" height="15" width="33%"><a href="admin.php?go=upload&useeditor={$useeditor}">{$lna[428]}</a></td>
