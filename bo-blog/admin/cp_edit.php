@@ -651,12 +651,13 @@ function autoselect ($name, $arrayoption, $arrayvalue, $selectedid=0, $disabled=
 
 function autoradio ($type, $name, $arraylabel, $arrayvalue, $arraychecked=array(), $arraydisabled=array()) {
 	if ($type!='checkbox' && $type!='radio') return;
-	for ($i=0; $i<count($arraylabel); $i++) {
+    $lableCount = count($arraylabel);
+	for ($i=0; $i<$lableCount; $i++) {
 		if ($arraychecked[$i]==1) $addcheck="checked='checked'";
 		else $addcheck='';
 		if ($arraydisabled[$i]==1) $disabled="disabled='disabled'";
 		else $disabled='';
-		if ($type=='checkbox') $disabled.=" id='{$name}' ";
+		if ($type=='checkbox' && $lableCount <= 1) $disabled.=" id='{$name}' ";
 		$formcontent.="<label><input type='{$type}' name='{$name}' value='{$arrayvalue[$i]}' {$addcheck} class='formradiobox' {$disabled}/>{$arraylabel[$i]}</label> ";
 	}
 	return $formcontent;
