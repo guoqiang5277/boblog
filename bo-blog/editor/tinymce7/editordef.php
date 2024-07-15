@@ -27,12 +27,12 @@ tinymce.init({
 	insertdatetime_formats: ["%Y年%m月%d日 %H点%M分%S秒", "%H点%M分%S秒", "%Y年%m月%d日", "%Y-%m-%d %H:%M:%S", "%Y-%m-%d", "%H:%M:%S"],
 	plugins: ' lists,advlist anchor autolink autosave directionality fullscreen help preview save' +
             ' code charmap codesample emoticons link media insertdatetime table searchreplace' +
-            ' image visualblocks visualchars wordcount',
+            ' image visualblocks visualchars wordcount uploader',
 	toolbar: [
             'bold italic underline strikethrough  blockquote alignleft aligncenter alignright alignnone   ltr rtl visualblocks visualchars  fullscreen restoredraft save cancel',
             'bullist numlist indent outdent undo redo link unlink anchor image code codesample emoticons media',
             'styles fontfamily fontsize fontsizeinput  insertdatetime  wordcount',
-            'forecolor backcolor hr removeformat table subscript superscript charmap searchreplace preview'
+            'forecolor backcolor hr removeformat table subscript superscript charmap searchreplace preview uploader'
         ],
     promotion:false,//是否显示右上角付费的提示,去掉右上角的upgrade按钮
     branding:false,//是否显示右下角的官方链接
