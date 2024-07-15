@@ -9,6 +9,7 @@ switch ($langback) {
 }
 $editorjs=<<<eot
 <script language="javascript" type="text/javascript" src="editor/tinymce7/tinymce.min.js"></script>
+<script language="javascript" type="text/javascript" src="editor/tinymce7/imageupload.js"></script>
 <script language="javascript" type="text/javascript">
 
 tinymce.init({
@@ -24,6 +25,7 @@ tinymce.init({
 	autosave_ask_before_unload: true,//离开页面前询问是否保存
 	image_advtab: true,//高级选项卡
 	automatic_uploads: true,
+	images_upload_handler: tinymce7_image_upload_handler,
 	insertdatetime_formats: ["%Y年%m月%d日 %H点%M分%S秒", "%H点%M分%S秒", "%Y年%m月%d日", "%Y-%m-%d %H:%M:%S", "%Y-%m-%d", "%H:%M:%S"],
 	plugins: ' lists,advlist anchor autolink autosave directionality fullscreen help preview save' +
             ' code charmap codesample emoticons link media insertdatetime table searchreplace' +

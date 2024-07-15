@@ -15,7 +15,7 @@ $codeversion="2.1.1.3626.3";
 $codename="pilot";
 //You can change anything below as you wish. Good Luck!
 
-if (file_exists('install/install.php')) {
+if (file_exists(__DIR__. '/install/install.php')) {
 	@header("Content-Type: text/html; charset=utf-8");
 	die ("警告：安装文件install/install.php仍然在您的服务器上，请立刻将其改名或删除！<br>警告：安裝程式install/install.php仍然在您的伺服器上，請立刻將其改名或刪除！<br>NOTICE: Installation file: install/install.php is still on your server. Please DELETE or RENAME it immediately.");
 }
@@ -138,7 +138,7 @@ if ($mbcon['enableopenid']=='1') {
 
 //Load User Group Permission Cache
 $permission=array();
-if (file_exists("data/usergroup{$userdetail['usergroup']}.php")) @include_once("data/usergroup{$userdetail['usergroup']}.php");
+if (file_exists(__DIR__."/data/usergroup{$userdetail['usergroup']}.php")) @include_once("data/usergroup{$userdetail['usergroup']}.php");
 else include_once("data/usergroup0.php");
 if (!defined('isLogin')) checkpermission('visit'); //Check 'Browse' permission
 
@@ -162,7 +162,7 @@ $statistics=$blog->getsinglevalue("{$db_prefix}counter");
 
 //Who's online
 if (!defined('noCounter')) { //trackback, rss, sitemap are not regarded as normal visits
-	$afilename="data/online.php";
+	$afilename=__DIR__."/data/online.php";
 	$onlineusers=$nowonline=array(); //2006-11-22 Security fix, 2006-11-25 modified
 	$online_all=@file($afilename);
 	for($i=0;$i<count($online_all);$i++){
