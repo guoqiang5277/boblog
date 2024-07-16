@@ -13,6 +13,18 @@ In memory of my university life
 $blogversion="2.1.1 Release";
 $codeversion="2.1.1.3626.3";
 $codename="pilot";
+$new_major_version=1;
+$new_minor_version=0;
+$new_patch_version=0;
+$new_versiontype="Beta";
+$new_builddate="20240716";
+$new_codename="banana";
+if ($new_versiontype == "Beta"){
+    $new_blogversion="[{$new_codename}] {$new_major_version}.{$new_minor_version}.{$new_patch_version}.{$new_builddate} {$new_versiontype}";
+}else if($new_versiontype == "Release"){
+    $new_blogversion="[{$new_codename}] {$new_major_version}.{$new_minor_version}.{$new_patch_version} {$new_versiontype}";
+}
+
 //You can change anything below as you wish. Good Luck!
 
 if (file_exists(__DIR__. '/install/install.php')) {
