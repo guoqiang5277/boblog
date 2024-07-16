@@ -121,7 +121,8 @@ $promptcleartmp
 </tr>
 <tr>
 <td colspan=2  class="sect">
-<b>Version {$blogversion}</b> ({$codeversion})<br>
+Version : {$new_blogversion}<br>
+{$lna[1198]} {$blogversion} ({$codeversion})<br>
 <br>
 <div style="height: 100px; width: 500px; overflow:auto; border: 1px solid #CCC">
 <b>Core Team</b><br>
