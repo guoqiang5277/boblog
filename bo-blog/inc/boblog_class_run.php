@@ -521,11 +521,13 @@ class getblogs extends boblog {
 		}
 		$entrytitle="<a href=\"".getlink_entry($entry['blogid'], $entry['blogalias'])."\">{$entry['title']}</a>";
 		if ($entry['sticky']==1 || $entry['sticky']==2) $entrytitle="[{$lnc[33]}] ".$entrytitle;
-		$entrydate=zhgmdate("{$mbcon['timeformat']}", ($entry['pubtime']+3600*$config['timezone']));
-		$entrytime=gmdate('H:i', ($entry['pubtime']+3600*$config['timezone']));
-		list($entrydatey, $entrydatem, $entrydated)=explode('/', gmdate('Y/n/j', ($entry['pubtime']+3600*$config['timezone'])));
-		$entrydatemnamefull=gmdate('F', ($entry['pubtime']+3600*$config['timezone']));
-        $entrydatemnameshort = $this->monthNames[gmdate('M', ($entry['pubtime'] + 3600 * $config['timezone']))];
+        $pubtimestamp = $entry['pubtime'] + 3600 * $config['timezone'];
+		$entrydate=zhgmdate("{$mbcon['timeformat']}", $pubtimestamp);
+		$entrytime=gmdate('H:i', $pubtimestamp);
+		list($entrydatey, $entrydatem, $entrydated)=explode('/', gmdate('Y/n/j', $pubtimestamp));
+		$entrydatemnamefull=gmdate('F', $pubtimestamp);
+        //$entrydatemnameshort = $this->monthNames[gmdate('M', ($entry['pubtime'] + 3600 * $config['timezone']))];
+        $entrydatemnameshort = date('Y-m',$pubtimestamp);
 		$tmp=$entry['authorid'];
 		$entryauthor=$adminlist[$tmp];
 		$entryauthor="<a href=\"".getlink_user($tmp)."\" target=\"_blank\">{$entryauthor}</a>";
@@ -945,11 +947,13 @@ class getblogs extends boblog {
 			$t=new template;
 		}
 		$entrytitle=$entry['pagetitle'];
-		$entrydate=zhgmdate("{$mbcon['timeformat']}", ($entry['pagetime']+3600*$config['timezone']));
-		$entrytime=gmdate('H:i', ($entry['pagetime']+3600*$config['timezone']));
-		list($entrydatey, $entrydatem, $entrydated)=explode('/', gmdate('Y/n/j', ($entry['pagetime']+3600*$config['timezone'])));
-		$entrydatemnamefull=gmdate('F', ($entry['pagetime']+3600*$config['timezone']));
-		$entrydatemnameshort=$this->monthNames[gmdate('M', ($entry['pagetime']+3600*$config['timezone']))];
+        $pagetimestamp = $entry['pagetime'] + 3600 * $config['timezone'];
+		$entrydate=zhgmdate("{$mbcon['timeformat']}", $pagetimestamp);
+		$entrytime=gmdate('H:i', $pagetimestamp);
+		list($entrydatey, $entrydatem, $entrydated)=explode('/', gmdate('Y/n/j', $pagetimestamp));
+		$entrydatemnamefull=gmdate('F', $pagetimestamp);
+		//$entrydatemnameshort=$this->monthNames[gmdate('M', ($entry['pagetime']+3600*$config['timezone']))];
+        $entrydatemnameshort = date('Y-m',$pagetimestamp);
 		$tmp=$entry['pageauthor'];
 		$entryauthor=$adminlist[$tmp];
 		$entryauthor="<a href=\"".getlink_user($tmp)."\" target=\"_blank\">{$entryauthor}</a>";
